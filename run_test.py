@@ -24,19 +24,21 @@ class Command(object):
             thread.join()
         #print(self.process.returncode)
 
-if len(sys.argv) != 6:
-    print('Usage python run_test [game] [-version] [extra-quantifier.lp] [d] [solver]')
+if len(sys.argv) != 5:
+    print('Usage python run_test [game] [-version] [extra-quantifier.lp] [solver]')
     exit(1)
 
 game = sys.argv[1]
 config = sys.argv[2]
 extra = sys.argv[3]
-d = sys.argv[4]
-solver = sys.argv[5]
+d = 22
+solver = sys.argv[4]
 com1 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/{game}-log-domain.lp  | python extract_ground.py | python construct_prefix.py {d} > extra-quantifier.lp'
 com2 = f"clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/{game}-log-domain.lp {extra} | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs |  bloqqer | qratpre+ --print-formula > out.txt"
 os.system(f"bash -c '{com1}'")
 os.system('sleep 1')
+with open('depth.txt') as f:
+    d = int(f.readline())
 os.system(f"bash -c '{com2}'")
 com3 = f'time {solver} out.txt'
 command = Command(f"bash -c '{com3}'")
