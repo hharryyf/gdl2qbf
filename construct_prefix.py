@@ -16,7 +16,10 @@ for line in sys.stdin:
     if lv != -1:
         #if lv == 1:
         if lv % 2 == 0:
-            lv += 1
+            if line[:5] == 'true(':
+                lv -= 1
+            else:
+                lv += 1
         if lv < level:
             print('_exists(' + str(lv) + ',' + str(line) + ').')
             #print('{' + str(line) + '}.')
