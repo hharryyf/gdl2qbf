@@ -4,7 +4,9 @@ _other_player(xplayer,oplayer). _other_player(oplayer,xplayer).
 _player_turn(xplayer,1).
 _player_turn(O,T+1) :- _player_turn(P,T), _other_player(P,O), move_time_domain(T+1).
 
-does(P, noop, T) :- _player_turn(O,T), _other_player(O,P), not terminated(T), move_time_domain(T).
+does(P, M, T) :- _player_turn(O,T), _other_player(O,P), not terminated(T), move_time_domain(T), legal(P, M, T).
+
+% does(P, noop, T) :- _player_turn(O,T), _other_player(O,P), not terminated(T), move_time_domain(T).
 
 time_domain(1).
 time_domain(T+1) :- move_time_domain(T).
