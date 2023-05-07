@@ -15,7 +15,7 @@ true(control(xplayer), 1).
 move_domain(mark(1..3, 1..3, red)).
 move_domain(mark(1..3, 1..3, yellow)).
 move_domain(mark(1..3, 1..3, green)).
-move_time_domain(1..23).
+move_time_domain(1..17).
 move_domain(noop).
 
 true(cell(M, N, red), T + 1) :- does(P, mark(M, N, red), T), true(cell(M, N, blank), T), time_domain(T), not terminated(T).
@@ -57,7 +57,7 @@ diagonal(X, T) :- true(cell(1, 3, X), T), true(cell(2, 2, X), T), true(cell(3, 1
 
 line(X, T) :- row(M, X, T), time_domain(T).
 line(X, T) :- column(M, X, T), time_domain(T).
-line(X, T) :- diagonal(X, T), time_domain(t).
+line(X, T) :- diagonal(X, T), time_domain(T).
 
 aline(T) :- line(red, T), time_domain(T).
 aline(T) :- line(yellow, T), time_domain(T).
