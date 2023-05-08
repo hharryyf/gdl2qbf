@@ -3,8 +3,6 @@
 role(xplayer).
 role(oplayer).
 move_time_domain(1..9).
-move_domain(mark(1..3, 1..3)).
-move_domain(noop).
 
 true(control(xplayer), 1).
 

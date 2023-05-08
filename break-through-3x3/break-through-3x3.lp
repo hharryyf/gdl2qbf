@@ -14,39 +14,6 @@ true(control(xplayer), 1).
 move_time_domain(1..5).
 
 %move_domain(moves(1..3, 1..3, 1..3, 1..3)).
-
-move_domain(moves(1, 1, 1, 2)).
-move_domain(moves(1, 1, 2, 2)).
-move_domain(moves(2, 1, 2, 2)).
-move_domain(moves(2, 1, 1, 2)).
-move_domain(moves(2, 1, 3, 2)).
-move_domain(moves(3, 1, 3, 2)).
-move_domain(moves(3, 1, 2, 2)).
-move_domain(moves(1, 2, 1, 3)).
-move_domain(moves(1, 2, 2, 3)).
-move_domain(moves(2, 2, 2, 3)).
-move_domain(moves(2, 2, 1, 3)).
-move_domain(moves(2, 2, 3, 3)).
-move_domain(moves(3, 2, 3, 3)).
-move_domain(moves(3, 2, 2, 3)).
-
-move_domain(moves(1, 2, 1, 1)).
-move_domain(moves(2, 2, 1, 1)).
-move_domain(moves(2, 2, 2, 1)).
-move_domain(moves(1, 2, 2, 1)).
-move_domain(moves(3, 2, 2, 1)).
-move_domain(moves(3, 2, 3, 1)).
-move_domain(moves(2, 2, 3, 1)).
-move_domain(moves(1, 3, 1, 2)).
-move_domain(moves(2, 3, 1, 2)).
-move_domain(moves(2, 3, 2, 2)).
-move_domain(moves(1, 3, 2, 2)).
-move_domain(moves(3, 3, 2, 2)).
-move_domain(moves(3, 3, 3, 2)).
-move_domain(moves(2, 3, 3, 2)).
-
-move_domain(noop).
-
     
 
 legal(xplayer, moves(X, Y1, X, Y2), T) :- true(control(xplayer), T), true(cell(X, Y1, xplayer), T), 

@@ -8,8 +8,6 @@ true(control(xplayer), 1).
 % we comment this out and put it in each individual file
 % move_time_domain(1..42).
 
-move_domain(drop(1..7)).
-move_domain(noop).
 
 legal(xplayer, noop, T) :- true(control(oplayer), T), time_domain(T).
 legal(xplayer, drop(X), T) :- true(control(xplayer), T), columnopen(X, T), time_domain(T).

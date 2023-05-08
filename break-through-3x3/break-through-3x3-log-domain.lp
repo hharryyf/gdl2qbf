@@ -31,3 +31,35 @@ does(P, moves(2, 3, 3, 2), T) :- not moveL(P, 1, T), not moveL(P, 2, T), moveL(P
 cheat(T) :- moveL(oplayer, 1, T), not moveL(oplayer, 2, T), moveL(oplayer, 3, T), moveL(oplayer, 4, T), moveL(oplayer, 5, T). 
 cheat(T) :- not moveL(oplayer, 1, T), moveL(oplayer, 2, T), moveL(oplayer, 3, T), moveL(oplayer, 4, T), moveL(oplayer, 5, T). 
 cheat(T) :- moveL(oplayer, 1, T), moveL(oplayer, 2, T), moveL(oplayer, 3, T), moveL(oplayer, 4, T), moveL(oplayer, 5, T).
+
+move_domain(moves(1, 1, 1, 2)).
+move_domain(moves(1, 1, 2, 2)).
+move_domain(moves(2, 1, 2, 2)).
+move_domain(moves(2, 1, 1, 2)).
+move_domain(moves(2, 1, 3, 2)).
+move_domain(moves(3, 1, 3, 2)).
+move_domain(moves(3, 1, 2, 2)).
+move_domain(moves(1, 2, 1, 3)).
+move_domain(moves(1, 2, 2, 3)).
+move_domain(moves(2, 2, 2, 3)).
+move_domain(moves(2, 2, 1, 3)).
+move_domain(moves(2, 2, 3, 3)).
+move_domain(moves(3, 2, 3, 3)).
+move_domain(moves(3, 2, 2, 3)).
+
+move_domain(moves(1, 2, 1, 1)).
+move_domain(moves(2, 2, 1, 1)).
+move_domain(moves(2, 2, 2, 1)).
+move_domain(moves(1, 2, 2, 1)).
+move_domain(moves(3, 2, 2, 1)).
+move_domain(moves(3, 2, 3, 1)).
+move_domain(moves(2, 2, 3, 1)).
+move_domain(moves(1, 3, 1, 2)).
+move_domain(moves(2, 3, 1, 2)).
+move_domain(moves(2, 3, 2, 2)).
+move_domain(moves(1, 3, 2, 2)).
+move_domain(moves(3, 3, 2, 2)).
+move_domain(moves(3, 3, 3, 2)).
+move_domain(moves(2, 3, 3, 2)).
+
+move_domain(noop).

@@ -17,3 +17,6 @@ cheat(T)   :- not moveL(oplayer, 1, T), moveL(oplayer, 2, T), moveL(oplayer, 3, 
 :- not moveL(xplayer, 1, T), moveL(xplayer, 2, T), moveL(xplayer, 3, T).
 cheat(T)   :- moveL(oplayer, 1, T), moveL(oplayer, 2, T), moveL(oplayer, 3, T).
 :- moveL(xplayer, 1, T), moveL(xplayer, 2, T), moveL(xplayer, 3, T).
+
+move_domain(drop(1..4)).
+move_domain(noop).

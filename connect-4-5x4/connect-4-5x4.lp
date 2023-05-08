@@ -7,9 +7,6 @@ true(control(xplayer), 1).
 
 move_time_domain(1..19).
 
-move_domain(drop(1..5)).
-move_domain(noop).
-
 legal(xplayer, noop, T) :- true(control(oplayer), T), time_domain(T).
 legal(xplayer, drop(X), T) :- true(control(xplayer), T), columnopen(X, T), time_domain(T).
 legal(oplayer, noop, T) :- true(control(xplayer), T), time_domain(T).

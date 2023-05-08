@@ -31,3 +31,9 @@ cheat(T) :- not moveL(oplayer, 1, T), not moveL(oplayer, 2, T), moveL(oplayer, 3
 cheat(T) :- moveL(oplayer, 1, T), not moveL(oplayer, 2, T), moveL(oplayer, 3, T), moveL(oplayer, 4, T), moveL(oplayer, 5, T). 
 cheat(T) :- not moveL(oplayer, 1, T), moveL(oplayer, 2, T), moveL(oplayer, 3, T), moveL(oplayer, 4, T), moveL(oplayer, 5, T). 
 cheat(T) :- moveL(oplayer, 1, T), moveL(oplayer, 2, T), moveL(oplayer, 3, T), moveL(oplayer, 4, T), moveL(oplayer, 5, T).
+
+
+move_domain(mark(1..3, 1..3, red)).
+move_domain(mark(1..3, 1..3, yellow)).
+move_domain(mark(1..3, 1..3, green)).
+move_domain(noop).

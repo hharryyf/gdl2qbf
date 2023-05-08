@@ -25,6 +25,8 @@ for line in sys.stdin:
                     if sm != 0 or s != ',':
                         interest += s
             
+            if interest == 'noop':
+                continue
             moves.add('move_domain(' + interest + ')')
             moveL.add(interest)
 
@@ -37,6 +39,8 @@ while (1 << tol) < lenl:
     tol += 1
 
 print(f'log_domain(1..{tol}).')
+
+print()
 
 j = 0
 for i in range(1, 1 << tol):
@@ -60,5 +64,8 @@ for i in range(1, 1 << tol):
                 print(f'moveL(oplayer,{k+1},T' + '), ', end='')
     j += 1
 
+print()
+
 for move in moves:
     print(move + '.')
+print()

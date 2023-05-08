@@ -12,11 +12,9 @@ true(cell(3, 2, blank), 1).
 true(cell(3, 3, blank), 1).
 true(control(xplayer), 1).
 
-move_domain(mark(1..3, 1..3, red)).
-move_domain(mark(1..3, 1..3, yellow)).
-move_domain(mark(1..3, 1..3, green)).
+
 move_time_domain(1..17).
-move_domain(noop).
+
 
 true(cell(M, N, red), T + 1) :- does(P, mark(M, N, red), T), true(cell(M, N, blank), T), time_domain(T), not terminated(T).
 true(cell(M, N, yellow), T + 1) :- does(P, mark(M, N, yellow), T), true(cell(M, N, red), T), time_domain(T), not terminated(T).
