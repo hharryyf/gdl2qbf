@@ -13,16 +13,16 @@ legal(oplayer, noop, T) :- true(control(xplayer), T), time_domain(T).
 legal(oplayer, drop(X), T) :- true(control(oplayer), T), columnopen(X, T), time_domain(T).
 
 
-true(cell(X, 1, P), T + 1) :- does(P, drop(X), T), columnempty(X, T), time_domain(T), not terminated(T).
+true(cell(X, 1, P), T + 1) :- does(P, drop(X), T), columnempty(X, T), move_time_domain(T), not terminated(T).
 
-true(cell(X, Y2, P), T + 1) :- does(P, drop(X), T), cellopen(X, Y2, T), succ(Y1, Y2), not cellopen(X, Y1, T), time_domain(T), not terminated(T).
+true(cell(X, Y2, P), T + 1) :- does(P, drop(X), T), cellopen(X, Y2, T), succ(Y1, Y2), not cellopen(X, Y1, T), move_time_domain(T), not terminated(T).
 
 
-true(cell(X, Y, P), T + 1) :- true(cell(X, Y, P), T), time_domain(T), not terminated(T).
+true(cell(X, Y, P), T + 1) :- true(cell(X, Y, P), T), move_time_domain(T), not terminated(T).
 
-true(control(xplayer), T + 1) :- true(control(oplayer), T), time_domain(T), not terminated(T).
+true(control(xplayer), T + 1) :- true(control(oplayer), T), move_time_domain(T), not terminated(T).
 
-true(control(oplayer), T + 1) :- true(control(xplayer), T), time_domain(T), not terminated(T).
+true(control(oplayer), T + 1) :- true(control(xplayer), T), move_time_domain(T), not terminated(T).
 
 
 terminal(T) :- line(xplayer, T), time_domain(T).

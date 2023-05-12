@@ -20,6 +20,6 @@ for line in sys.stdin:
                 lv -= 1
             else:
                 lv += 1
-        if lv < level:
+        if lv <= level:
             print('_exists(' + str(lv) + ',' + str(line) + ').')
             #print('{' + str(line) + '}.')

@@ -11,6 +11,7 @@ true(cell(2, 5, oplayer), 1).
 true(cell(3, 5, oplayer), 1).
 true(cell(4, 5, oplayer), 1).
 
+
 true(control(xplayer), 1).
 
 move_time_domain(1..15).
