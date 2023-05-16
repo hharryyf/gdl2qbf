@@ -109,3 +109,19 @@ plusplus(1, 2).
 plusplus(2, 3).
 plusplus(3, 4).
 
+% persistent
+% :- true(cell(1, 1, xplayer), T), not true(cell(1, 1, xplayer), T), time_domain(T-1), time_domain(T), not terminated(T).
+
+% :- true(cell(2, 1, xplayer), T), not true(cell(2, 1, xplayer), T), time_domain(T-1), time_domain(T), not terminated(T).
+
+% :- true(cell(3, 1, xplayer), T), not true(cell(3, 1, xplayer), T), time_domain(T-1), time_domain(T), not terminated(T).
+
+% :- true(cell(4, 1, xplayer), T), not true(cell(4, 1, xplayer), T), time_domain(T-1), time_domain(T), not terminated(T).
+
+% :- true(cell(1, 4, oplayer), T), not true(cell(1, 4, oplayer), T), time_domain(T-1), time_domain(T), not terminated(T).
+
+% :- true(cell(2, 4, oplayer), T), not true(cell(2, 4, oplayer), T), time_domain(T-1), time_domain(T), not terminated(T).
+
+% :- true(cell(3, 4, oplayer), T), not true(cell(3, 4, oplayer), T), time_domain(T-1), time_domain(T), not terminated(T).
+
+% :- true(cell(4, 4, oplayer), T), not true(cell(4, 4, oplayer), T), time_domain(T-1), time_domain(T), not terminated(T).

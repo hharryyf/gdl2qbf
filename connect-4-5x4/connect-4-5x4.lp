@@ -49,6 +49,9 @@ goal(oplayer, 0, T) :- line(xplayer, T), time_domain(T).
 goal(oplayer, 0, T) :- not line(xplayer, T), not line(oplayer, T), boardopen(T).
 
 
+% :- columnopen(X, T+1), not columnopen(X, T), not terminated(T+1), time_domain(T+1), time_domain(T).
+
+
 cellopen(X, Y, T) :- x(X), y(Y), not true(cell(X, Y, xplayer), T), not true(cell(X, Y, oplayer), T), time_domain(T).
 
 columnopen(X, T) :- cellopen(X, 4, T), time_domain(T).
@@ -78,3 +81,7 @@ succ(4, 5).
 
 x(1..5).
 y(1..4).
+
+% persistent 
+%:- columnopen(X, T+1), not columnopen(X, T), not terminated(T+1), time_domain(T+1), time_domain(T).
+%:- cellopen(X, Y, T+1), not cellopen(X, Y, T), not terminated(T+1), time_domain(T+1), time_domain(T).

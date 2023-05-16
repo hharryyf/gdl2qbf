@@ -57,6 +57,7 @@ columnempty(X, T) :- cellopen(X, 1, T), time_domain(T).
 
 boardopen(T) :- x(X), columnopen(X, T), time_domain(T).
 
+
 line(P, T) :- true(cell(X1, Y, P), T), succ(X1, X2), succ(X2, X3), 
               true(cell(X2, Y, P), T), true(cell(X3, Y, P), T), time_domain(T).
 

@@ -18,6 +18,9 @@ true(control(xplayer), 1).
 
 move_time_domain(1..17).
 
+% true(cell(M, N, green), T + 1) :- true(cell(M, N, green), T), move_time_domain(T), not terminated(T).
+
+% :- true(cell(M, N, blank), T), not true(cell(M, N, blank), T-1), time_domain(T-1), time_domain(T), not terminated(T).
 
 true(cell(M, N, red), T + 1) :- does(P, mark(M, N, red), T), true(cell(M, N, blank), T), time_domain(T), not terminated(T).
 true(cell(M, N, yellow), T + 1) :- does(P, mark(M, N, yellow), T), true(cell(M, N, red), T), time_domain(T), not terminated(T).
@@ -75,3 +78,10 @@ open(T) :- true(cell(M, N, blank), T), time_domain(T).
 open(T) :- true(cell(M, N, red), T), time_domain(T).
 
 open(T) :- true(cell(M, N, yellow), T), time_domain(T).
+
+% persistent
+true(cell(M, N, green), T + 1) :- true(cell(M, N, green), T), move_time_domain(T), not terminated(T).
+
+% "reverse" persistent
+
+:- true(cell(M, N, blank), T), not true(cell(M, N, blank), T-1), time_domain(T-1), time_domain(T), not terminated(T).

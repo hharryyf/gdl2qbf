@@ -66,3 +66,8 @@ open(T) :- true(cell(M, N, blank), T), time_domain(T).
 open(T) :- true(cell(M, N, red), T), time_domain(T).
 
 open(T) :- true(cell(M, N, yellow), T), time_domain(T).
+
+% persistent 
+%true(cell(M, N, green), T + 1) :- true(cell(M, N, green), T), move_time_domain(T), not terminated(T).
+
+%:- true(cell(M, N, blank), T), not true(cell(M, N, blank), T-1), time_domain(T-1), time_domain(T), not terminated(T).
