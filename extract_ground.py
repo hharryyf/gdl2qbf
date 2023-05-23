@@ -5,7 +5,7 @@ mx = -1
 # specify the 'static' relation and things we don't want to quantify
 bad = ['moveL', 'x(', 'y(', 'succ(', 'time_domain(', '_', 'role', 'move_',
        'log_', 'cell(', 'distinctCell(', 'xindex', 'yindex', 'xplusplus',
-       'yplusplus', 'plusplus', 'index'
+       'yplusplus', 'plusplus', 'index', 'next_player', 'smaller'
        ]
 
 for line in sys.stdin:
