@@ -13,13 +13,13 @@ true(cell(1, 2, xplayer), 1).
 true(cell(2, 2, xplayer), 1).
 true(cell(3, 2, xplayer), 1).
 
-true(cell(1, 3, oplayer), 1).
-true(cell(2, 3, oplayer), 1).
-true(cell(3, 3, oplayer), 1).
+true(cell(1, 5, oplayer), 1).
+true(cell(2, 5, oplayer), 1).
+true(cell(3, 5, oplayer), 1).
 
 true(control(xplayer), 1).
 
-move_time_domain(1..19).
+move_time_domain(1..13).
 
 %move_domain(moves(1..3, 1..3, 1..3, 1..3)).
 
@@ -85,7 +85,7 @@ distinctCell(X1, Y1, X2, Y2) :- cell(X1, Y1), cell(X2, Y2), X1 != X2.
 
 distinctCell(X1, Y1, X2, Y2) :- cell(X1, Y1), cell(X2, Y2), Y1 != Y2.
 
-whiteWin(T) :- xindex(X), true(cell(X, 4, xplayer), T), time_domain(T).
+whiteWin(T) :- xindex(X), true(cell(X, 5, xplayer), T), time_domain(T).
 
 blackWin(T) :- xindex(X), true(cell(X, 1, oplayer), T), time_domain(T).
 
@@ -99,9 +99,10 @@ blackCell(T) :- cell(X, Y), true(cell(X, Y, oplayer), T), time_domain(T).
 
 
 xindex(1..3).
-yindex(1..4).
+yindex(1..5).
 xplusplus(1, 2).
 xplusplus(2, 3).
 yplusplus(1, 2).
 yplusplus(2, 3).
 yplusplus(3, 4).
+yplusplus(4, 5).
