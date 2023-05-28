@@ -14,3 +14,4 @@ move_domain(drop(1)).
 move_domain(drop(5)).
 move_domain(drop(3)).
 move_domain(drop(2)).
+% move_domain(noop).

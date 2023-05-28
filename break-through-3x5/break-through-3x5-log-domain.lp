@@ -120,3 +120,4 @@ move_domain(moves(2,4,1,3)).
 move_domain(moves(3,3,2,2)).
 move_domain(moves(3,5,3,4)).
 move_domain(moves(2,2,2,3)).
+% move_domain(noop).

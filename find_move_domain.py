@@ -3,17 +3,22 @@ import sys
 state = 0
 moves = set()
 moveL = set()
+curr_player = 'xplayer'
+other_player = 'oplayer'
+
 for line in sys.stdin:
     line = line.strip()
     if line == '0':
         state += 1
     elif state == 1:
         atom = line.split()[-1]
-        if atom[:5] == 'does(':
+        if atom[:6] == 'legal(':
             ss = 0
             sm = 0
-            does3 = atom[5:-1]
+            does3 = atom[6:-1]
             interest = ''
+            player = ''
+            TT = ''
             for s in does3:    
                 if s == '(':
                     sm += 1
@@ -24,11 +29,20 @@ for line in sys.stdin:
                 if ss == 1:
                     if sm != 0 or s != ',':
                         interest += s
+                if ss == 0:
+                    player += s
+                if ss == 2:
+                    TT += s
+
             
-            if interest == 'noop':
-                continue
-            moves.add('move_domain(' + interest + ')')
-            moveL.add(interest)
+            TT = int(TT[1:])
+            if TT % 2 == 1 and player == curr_player:
+                moves.add('move_domain(' + interest + ')')
+                moveL.add(interest)
+            elif TT % 2 == 0 and player == other_player:
+                moves.add('move_domain(' + interest + ')')
+                moveL.add(interest)
+            # print(player, interest, TT)
 
 movelist = list(moves)
 moveL = list(moveL)

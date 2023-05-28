@@ -118,4 +118,4 @@ move_domain(moves(3, 4, 3, 3)).
 move_domain(moves(2, 4, 3, 3)).
 
 
-move_domain(noop).
+% move_domain(noop).

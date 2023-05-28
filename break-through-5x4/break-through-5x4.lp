@@ -1,21 +1,8 @@
 role(xplayer).
 role(oplayer).
 
-true(cell(1, 1, xplayer), 1).
-true(cell(2, 1, xplayer), 1).
-true(cell(3, 1, xplayer), 1).
-true(cell(4, 1, xplayer), 1).
-true(cell(5, 1, xplayer), 1).
-
-true(cell(1, 4, oplayer), 1).
-true(cell(2, 4, oplayer), 1).
-true(cell(3, 4, oplayer), 1).
-true(cell(4, 4, oplayer), 1).
-true(cell(5, 4, oplayer), 1).
-
 true(control(xplayer), 1).
 
-move_time_domain(1..11).
 
 %move_domain(moves(1..3, 1..3, 1..3, 1..3)).
 

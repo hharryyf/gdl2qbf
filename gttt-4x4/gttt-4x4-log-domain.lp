@@ -48,3 +48,5 @@ move_domain(mark(1,4)).
 move_domain(mark(1,1)).
 move_domain(mark(1,3)).
 move_domain(mark(2,3)).
+
+% move_domain(noop).

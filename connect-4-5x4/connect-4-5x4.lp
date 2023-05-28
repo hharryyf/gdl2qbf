@@ -1,4 +1,4 @@
-% the encoding of 5*5 connect-4
+% the encoding of 5*4 connect-4
 
 role(xplayer).
 role(oplayer).

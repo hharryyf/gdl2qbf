@@ -1,10 +1,10 @@
 role(xplayer).
 role(oplayer).
 
-true(heap(a, 1), 1).
+true(heap(a, 5), 1).
 true(heap(b, 5), 1).
-true(heap(c, 4), 1).
-true(heap(d, 2), 1).
+true(heap(c, 5), 1).
+true(heap(d, 0), 1).
 
 true(control(xplayer), 1).
 

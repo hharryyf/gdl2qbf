@@ -104,3 +104,4 @@ move_domain(moves(2,2,1,3)).
 move_domain(moves(1,4,2,3)).
 move_domain(moves(2,5,1,6)).
 move_domain(moves(1,6,1,5)).
+% move_domain(noop).
