@@ -2,7 +2,35 @@ import sys
 import re
 level = 0
 
-minus_one = ['true(', 'legal(']
+minus_one = set()
+bad = []
+with open('static_rel.txt', 'r') as f:
+    lines = f.readlines()
+    #print(lines)
+    state = 0
+    for line in lines:
+        line = line.strip()
+        if line == '0':
+            state += 1
+        else:
+            if state == 1:
+                bad.append(line)
+
+
+with open('no_does.txt', 'r') as f:
+    lines = f.readlines()
+    #print(lines)
+    state = 0
+    for line in lines:
+        line = line.strip()
+        if line == '0':
+            state += 1
+        else:
+            if state == 1 and line not in bad:
+                minus_one.add(line)
+
+if 'cheat(' in minus_one:
+    minus_one.remove('cheat(')
 
 if len(sys.argv) == 2:
     level = int(sys.argv[1])

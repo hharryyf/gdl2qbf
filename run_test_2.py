@@ -44,11 +44,18 @@ if len(sys.argv) >= 6:
     optional = sys.argv[5]
 else:
     optional = ""
+
+com3 = f'cat {game}/{game}.lp {optional} | python calculate_dependency.py does true > static_rel.txt'
+com4 = f'cat {game}/{game}.lp {optional} | python calculate_dependency.py does > no_does.txt'
+
+os.system(f"bash -c '{com3}'")
+os.system(f"bash -c '{com4}'")
+os.system('sleep 1')
 com0 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/{game}-log-domain{config2}.lp {optional}  | python extract_ground.py > /dev/null'
 os.system(f"bash -c '{com0}'")
 os.system('sleep 1')
 with open('depth.txt') as f:
-    d = int(f.readline())
+     d = int(f.readline())
 com1 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/{game}-log-domain{config2}.lp {optional} | python extract_ground.py | python construct_prefix.py {d} > extra-quantifier.lp'
 com2 = f"clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/{game}-log-domain{config2}.lp {extra} {optional} | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs |  bloqqer --keep=0 | qratpre+ --print-formula > out.txt"
 os.system(f"bash -c '{com1}'")

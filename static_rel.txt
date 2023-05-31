@@ -1,0 +1,15 @@
+aline(
+does(
+true(
+goal(
+diagonal(
+terminated(
+row(
+terminal(
+line(
+open(
+legal(
+column(
+0
+role(
+0

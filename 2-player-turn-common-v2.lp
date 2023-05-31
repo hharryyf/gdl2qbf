@@ -23,17 +23,20 @@ _forall(T, moveL(oplayer, M, T)) :- _player_turn(oplayer,T), log_domain(M).
 terminated(T) :- terminal(T).
 terminated(T) :- terminated(T-1), time_domain(T).
 
+% cheat would terminate the game
 terminated(T+1) :- cheat(T).
 cheat(T) :- cheat(T-1), move_time_domain(T).
 
+% deal with legal move
 :- does(xplayer,M,T), not legal(xplayer,M,T).
 cheat(T) :- does(oplayer,M,T), not legal(oplayer,M,T), move_domain(M).
 
 % existential player must take a move at its turn
 1 {does(xplayer,M,T) : move_domain(M)} 1 :- not terminated(T), _player_turn(xplayer, T).
+% existential player cannot take a move when terminated
 :- terminated(T), does(xplayer,M,T).
 cheat(T) :- not terminated(T), _player_turn(oplayer, T), 0 {does(oplayer, M, T)} 0.
-cheat(T) :- terminated(T), moveL(oplayer, M, T).
+% cheat(T) :- terminated(T), moveL(oplayer, M, T).
 
 % game must terminate
 :- 0 {terminated(T) : time_domain(T)} 0.

@@ -1,13 +1,30 @@
 import sys
 import re
+
+# specify the 'static' relation and things we don't want to quantify
+#bad = ['moveL', 'x(', 'y(', 'succ(', 'time_domain(', '_', 'role', 'move_',
+#       'log_', 'cell(', 'distinctCell(', 'xindex', 'yindex', 'xplusplus',
+#       'yplusplus', 'plusplus', 'index', 'next_player', 'smaller'
+#       ]
+
+bad = ['moveL(', 'log_domain(', 'time_domain(', 'move_time_domain(', 'move_domain(', '_']
+
+with open('static_rel.txt', 'r') as f:
+    lines = f.readlines()
+    #print(lines)
+    state = 0
+    for line in lines:
+        line = line.strip()
+        if line == '0':
+            state += 1
+        else:
+            if state == 1:
+                bad.append(line)
+
+#print(bad)
+#exit(1)
 state = 0
 mx = -1
-# specify the 'static' relation and things we don't want to quantify
-bad = ['moveL', 'x(', 'y(', 'succ(', 'time_domain(', '_', 'role', 'move_',
-       'log_', 'cell(', 'distinctCell(', 'xindex', 'yindex', 'xplusplus',
-       'yplusplus', 'plusplus', 'index', 'next_player', 'smaller'
-       ]
-
 for line in sys.stdin:
     line = line.strip()
     if line == '0':

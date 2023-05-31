@@ -1,6 +1,6 @@
 log_domain(1..4).
 
-does(oplayer, reduce(a,2), T) :- not moveL(oplayer,1,T), not moveL(oplayer,2,T), not moveL(oplayer,3,T), not moveL(oplayer,4,T), legal(oplayer, reduce(a,2), T).
+does(oplayer, reduce(a,2), T) :- not moveL(oplayer,1,T), not moveL(oplayer,2,T), not moveL(oplayer,3,T), not moveL(oplayer,4,T), legal(oplayer, reduce(a,2), T), _player_turn(oplayer, T).
 does(oplayer, reduce(b,1), T) :- moveL(oplayer,1,T), not moveL(oplayer,2,T), not moveL(oplayer,3,T), not moveL(oplayer,4,T), legal(oplayer, reduce(b,1), T).
 does(oplayer, reduce(c,2), T) :- not moveL(oplayer,1,T), moveL(oplayer,2,T), not moveL(oplayer,3,T), not moveL(oplayer,4,T), legal(oplayer, reduce(c,2), T).
 does(oplayer, reduce(c,0), T) :- moveL(oplayer,1,T), moveL(oplayer,2,T), not moveL(oplayer,3,T), not moveL(oplayer,4,T), legal(oplayer, reduce(c,0), T).

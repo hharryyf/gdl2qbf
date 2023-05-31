@@ -5,10 +5,22 @@ role(oplayer).
 true(control(xplayer), 1).
 
 
-true(cell(1, 1, blank), 1). true(cell(1, 2, blank), 1). true(cell(1, 3, blank), 1). true(cell(1, 4, blank), 1).
-true(cell(2, 1, blank), 1). true(cell(2, 2, blank), 1). true(cell(2, 3, blank), 1). true(cell(2, 4, blank), 1).
-true(cell(3, 1, blank), 1). true(cell(3, 2, blank), 1). true(cell(3, 3, blank), 1). true(cell(3, 4, blank), 1).
-true(cell(4, 1, blank), 1). true(cell(4, 2, blank), 1). true(cell(4, 3, blank), 1). true(cell(4, 4, blank), 1).
+true(cell(1, 1, blank), 1). 
+true(cell(1, 2, blank), 1). 
+true(cell(1, 3, blank), 1). 
+true(cell(1, 4, blank), 1).
+true(cell(2, 1, blank), 1). 
+true(cell(2, 2, blank), 1). 
+true(cell(2, 3, blank), 1). 
+true(cell(2, 4, blank), 1).
+true(cell(3, 1, blank), 1). 
+true(cell(3, 2, blank), 1). 
+true(cell(3, 3, blank), 1). 
+true(cell(3, 4, blank), 1).
+true(cell(4, 1, blank), 1). 
+true(cell(4, 2, blank), 1). 
+true(cell(4, 3, blank), 1). 
+true(cell(4, 4, blank), 1).
 
 
 legal(P, mark(X, Y), T) :- true(control(P), T), true(cell(X, Y, blank), T), time_domain(T).

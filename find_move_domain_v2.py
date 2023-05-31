@@ -67,7 +67,10 @@ for i in range(0, 1 << tol):
             if ((i >> k) & 1) == 0:
                 print('not ', end='')
             if k == tol - 1:
-                print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T).')
+                if i == 0:
+                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T), _player_turn(oplayer, T).')
+                else:
+                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T).')
             else:
                 print(f'moveL(oplayer,{k+1},T' + '), ', end='')
     j += 1
