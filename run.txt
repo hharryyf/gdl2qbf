@@ -1,1 +1,0 @@
-clingo --output=smodels [encoding files] | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs | depqbf 
