@@ -64,4 +64,4 @@ os.system(f"bash -c '{com2}'")
 #print(com1)
 com3 = f'time {solver} out.txt'
 command = Command(f"bash -c '{com3}'")
-command.run(timeout=1805)
+command.run(timeout=1205)

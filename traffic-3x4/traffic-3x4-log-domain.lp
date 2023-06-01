@@ -101,4 +101,4 @@ move_domain(mark(3,1,green)).
 move_domain(mark(3,3,yellow)).
 move_domain(mark(3,3,red)).
 
-move_domain(noop).
+% move_domain(noop).

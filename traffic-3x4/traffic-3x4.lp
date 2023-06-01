@@ -16,19 +16,19 @@ true(cell(3, 4, blank), 1).
 true(control(xplayer), 1).
 
 
-move_time_domain(1..17).
+move_time_domain(1..15).
 
 % true(cell(M, N, green), T + 1) :- true(cell(M, N, green), T), move_time_domain(T), not terminated(T).
 
 % :- true(cell(M, N, blank), T), not true(cell(M, N, blank), T-1), time_domain(T-1), time_domain(T), not terminated(T).
 
-true(cell(M, N, red), T + 1) :- does(P, mark(M, N, red), T), true(cell(M, N, blank), T), time_domain(T), not terminated(T).
-true(cell(M, N, yellow), T + 1) :- does(P, mark(M, N, yellow), T), true(cell(M, N, red), T), time_domain(T), not terminated(T).
-true(cell(M, N, green), T + 1) :- does(P, mark(M, N, green), T), true(cell(M, N, yellow), T), time_domain(T), not terminated(T).
-true(cell(M, N, C0), T + 1) :- does(P, mark(J, K, C1), T), true(cell(M, N, C0), T), M != J, time_domain(T), not terminated(T).
-true(cell(M, N, C0), T + 1) :- does(P, mark(J, K, C1), T), true(cell(M, N, C0), T), N != K, time_domain(T), not terminated(T).
-true(control(xplayer), T + 1) :- true(control(oplayer), T), time_domain(T).
-true(control(oplayer), T + 1) :- true(control(xplayer), T), time_domain(T).
+true(cell(M, N, red), T + 1) :- does(P, mark(M, N, red), T), true(cell(M, N, blank), T), move_time_domain(T), not terminated(T).
+true(cell(M, N, yellow), T + 1) :- does(P, mark(M, N, yellow), T), true(cell(M, N, red), T), move_time_domain(T), not terminated(T).
+true(cell(M, N, green), T + 1) :- does(P, mark(M, N, green), T), true(cell(M, N, yellow), T), move_time_domain(T), not terminated(T).
+true(cell(M, N, C0), T + 1) :- does(P, mark(J, K, C1), T), true(cell(M, N, C0), T), M != J, move_time_domain(T), not terminated(T).
+true(cell(M, N, C0), T + 1) :- does(P, mark(J, K, C1), T), true(cell(M, N, C0), T), N != K, move_time_domain(T), not terminated(T).
+true(control(xplayer), T + 1) :- true(control(oplayer), T), move_time_domain(T).
+true(control(oplayer), T + 1) :- true(control(xplayer), T), move_time_domain(T).
 
 legal(W, mark(X, Y, red), T) :- true(cell(X, Y, blank), T), true(control(W), T), time_domain(T).
 legal(W, mark(X, Y, yellow), T) :- true(cell(X, Y, red), T), true(control(W), T), time_domain(T).
