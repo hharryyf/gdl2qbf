@@ -40,32 +40,33 @@ python run_test_2.py [game name] [-v2|-v4] extra-quantifier.lp [caqe|depqbf] [op
 
 ## Results
 
-We run the experiments on several families, with an iterative deepening approach. Each instance has a time limit of 30 minutes. If the solver can solve the instance, we record its run time. Otherwise, we record the maximum depth it is capable of printing UNSAT in bracket. Note that preprocessing time does not count, and no instance takes more than 900s of preprocessing time.
+We run the experiments on several families, with an iterative deepening approach. Each instance has a time limit of 30 minutes. The result is recorded as a tuple (time, max depth). If the solver can solve the instance with the maximum possible
+depth, max depth is equal to max-depth. Otherwise, it is the largest depth the solver is capable of printing UNSAT.
 
 **Tic-Tac-Toe**
-Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
+Configuration | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | ---
-3x3 (F) | 9 | - | - | - | -
+3x3 (F) | 9 | (0.24,9) | (0.30,9) | (0.27,9) | (0.19,9)
 
 
 **Connect-3**
 
-Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
+Configuration | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | ---
-4x4 (T) | 9 | - | - | - | -
-5x5 (T) | 9 | - | - | - | -
+4x4 (T) | 9 | (0.04,9) | (0.04,9) | (0.06,9) | (0.04,9)
+5x5 (T) | 9 | **(0.14,9)** | (0.19,9) | (0.19,9) | (0.17,9)
 
 **Connect-4**
 
-Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
+Configuration | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | ---
-4x4 (F) | 15 | - | - | - | -
-5x4 (F) | 19 | - | - | - | -
+4x4 (F) | 15 | **(0.24,15)** | (1.06,15) | (0.32,15) | (0.54,15)
+5x4 (F) | 19 | (30.43,19) | - | - | -
 5x5 (?) | 25 | - | - | - | -
 
 **Break-Through-1-row**
 
-Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
+Configuration | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | ---
 3x3 (T) | 5 | - | - | - | -
 3x4 (T) | 9 | - | - | - | -
@@ -74,7 +75,7 @@ Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
 
 **Break-Through-2-row**
 
-Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
+Configuration | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | ---
 2x5 (F) | 21 | - | - | - | -
 2x6 (T) | 15 | - | - | - | -
@@ -85,14 +86,14 @@ Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
 
 **Traffic-Light**
 
-Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
+Configuration | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | ---
 3x3 (T) | 17 | - | - | - | -
 3x4 (?) | ? | - | - | - | -
 
 **GTTT-4x4-1-1**
 
-Configuration | max-depth | Caqe-v2  | DepQBF-v4 | Caqe-v4 | DepQBF-v4
+Configuration | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | ---
 domino (T) | 3 | - | - | - | -
 ei (T) | 5 | - | - | - | -
