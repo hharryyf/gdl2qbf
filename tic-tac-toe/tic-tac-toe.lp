@@ -43,6 +43,6 @@ goal(oplayer, 0, T) :- line(x, T), time_domain(T).
 
 
 % persistent
-:- true(cell(M, N, blank), T), not true(cell(M, N, blank), T-1), time_domain(T-1), time_domain(T), not terminated(T).
-true(cell(M, N, x), T + 1) :- true(cell(M, N, x), T), move_time_domain(T), not terminated(T).
-true(cell(M, N, o), T + 1) :- true(cell(M, N, o), T), move_time_domain(T), not terminated(T).
+% :- true(cell(M, N, blank), T), not true(cell(M, N, blank), T-1), time_domain(T-1), time_domain(T), not terminated(T).
+% true(cell(M, N, x), T + 1) :- true(cell(M, N, x), T), move_time_domain(T), not terminated(T).
+% true(cell(M, N, o), T + 1) :- true(cell(M, N, o), T), move_time_domain(T), not terminated(T).
