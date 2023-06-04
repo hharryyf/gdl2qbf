@@ -109,7 +109,7 @@ Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
 --- | --- | --- | --- | --- | --- | ---
 3x3 | T | 17 | **174.11** | * | 337.80 | *
-3x4 | ? | *15* | ***360.28*** | * | * | *
+3x4 | ? | *15* | ***545.71*** | * | * | *
 
 
 Version 2 with cheating variable has a similar performance as version 4. However, if we focus on the solver DepQBF, removing the
