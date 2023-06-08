@@ -33,7 +33,7 @@ clingo --output=smodels [game.lp] [game/turn.lp] move-domain.lp | python find_mo
 * To find the maximum strategic depth of a game, keep increasing the depth in invalid_move.lp until there's no stable model
 
 ```
-clingo [game.lp] [game-log-domain.lp] [game/turn.lp] 2-player-turn-common-v2.lp invalid_move.lp
+clingo [game.lp] [game-log-domain-v2.lp] [game/turn.lp] 2-player-turn-common-v4.lp invalid_move.lp
 
 ```
 
