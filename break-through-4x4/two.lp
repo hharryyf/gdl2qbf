@@ -19,4 +19,4 @@ true(cell(3, 4, oplayer), 1).
 true(cell(4, 4, oplayer), 1).
 
 
-move_time_domain(1..25).
+move_time_domain(1..23).
