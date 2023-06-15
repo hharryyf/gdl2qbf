@@ -16,7 +16,7 @@ true(cell(3, 4, blank), 1).
 true(control(xplayer), 1).
 
 
-move_time_domain(1..13).
+move_time_domain(1..15).
 
 % true(cell(M, N, green), T + 1) :- true(cell(M, N, green), T), move_time_domain(T), not terminated(T).
 
