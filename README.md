@@ -53,70 +53,71 @@ python run_test_3.py [game name] -v5 extra-quantifier.lp [caqe|depqbf] [optional
 
 ## Results
 
-We run the experiments on several families, with an iterative deepening approach. Each instance has a time limit of 20 minutes. If the solver can solve the instance with the maximum possible winning depth d, max-depth is equal to d. Otherwise,
+We run the experiments on several families, with an iterative deepening approach. Each instance has a time limit of 25 minutes. If the solver can solve the instance with the maximum possible winning depth d, max-depth is equal to d. Otherwise,
 max-depth is equal to the maximum depth d' in ***italic*** such that there exists at least one solver configuration can solve the instance and print UNSAT. We record the time in the corresponding column, * means timeout.
 
 **Break-Through-1-row**
 
 Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
-3x3 | T | 5 | 0.00 | 0.00 | 0.00 | 0.00
-3x4 | T | 9 | 0.13 | 0.51 | 0.11 | **0.07**
-4x3 | T | 5 | **0.01** | 0.02 | 0.02 | 0.05
-4x4 | T | 11 | **3.34** | * | 8.47 | 6.39
-4x5 | T | 15 | * | * | **807.54** | 844.01
-5x4 | T | 11 | **20.33** | * | 35.86 | 34.06
+3x3 | T | 5 | 0.00 | 0.00 | 0.00 | 0.00 | 0.01 | 0.02
+3x4 | T | 9 | 0.13 | 0.51 | 0.11 | **0.07** | 0.24 | 0.32
+4x3 | T | 5 | **0.01** | 0.02 | 0.02 | 0.05 | 0.06 | 0.16
+4x4 | T | 11 | **3.34** | * | 8.47 | 6.39 | 4.34 | 8.37
+4x5 | T | 15 | * | * | 807.54 | 844.01 | 710.62 | **592.81**
+5x4 | T | 11 | **20.33** | * | 35.86 | 34.06 | 92.67 | 50.31
 
 **Break-Through-2-row**
 
-Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
---- | --- | --- | --- | --- | --- | ---
-2x5 | F | 21 | 0.74 | * | **0.20** | 0.78
-2x6 | T | 15 | **2.86** | * | 7.23 | 4.74
-3x4 | F | 19 | 0.26 | * | **0.15** | 0.39
-3x5 | ? | *17* | ***635.74*** | * | 781.66 | 904.67
-4x4 | F | 25 | 22.73 | * | **3.28** | 95.05
+Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+2x5 | F | 21 | 0.74 | * | **0.20** | 0.78 | 0.29 | 1.98
+2x6 | T | 15 | **2.86** | * | 7.23 | 4.74 | 7.56 | 8.59
+3x4 | F | 19 | 0.26 | * | **0.15** | 0.39 | 1.53 | 0.71
+3x5 | ? | *17* | ***635.74*** | * | 781.66 | 904.67 | 1038.38 | 836.66
+4x4 | F | 25 | 22.73 | * | **3.28** | 95.05 | 32.35 | 56.19
 
 **Connect-3**
 
-Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
---- | --- | --- | --- | --- | --- | ---
-4x4 | T | 9 | 0.04 | 0.04 | 0.06 | 0.04
-5x5 | T | 9 | **0.14** | 0.19 | 0.19 | 0.17
+Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+4x4 | T | 9 | 0.04 | 0.04 | 0.06 | 0.04 | 0.04 | 0.04
+5x5 | T | 9 | 0.14 | 0.19 | 0.19 | 0.17 | **0.12** | 0.17
+
 
 **Connect-4**
 
-Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
---- | --- | --- | --- | --- | --- | ---
-4x4 | F | 15 | **0.24** | 1.06 | 0.32 | 0.54
-5x4 | F | 19 | **30.43** | 171.33 | 43.54 | 122.42
-5x5 | ? | *21* | 462.14 | * | ***242.24*** | *
+Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+4x4 | F | 15 | **0.24** | 1.06 | 0.32 | 0.54 | 0.47 | 1.10
+5x4 | F | 19 | **30.43** | 171.33 | 43.54 | 122.42 | 93.67 | 177.24
+5x5 | ? | *21* | 462.14 | * | ***242.24*** | * | 420.99 | 1252.73 (full problem is ~6h)
 
 **GTTT-4x4-1-1**
 
-Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
---- | --- | --- | --- | --- | --- | ---
-domino | T | 3 | 0.00 | 0.02 | 0.00 | 0.00
-ei | T | 5 | 0.20 | 0.06 | 0.12 | **0.05**
-elly | T | 7 | **0.35** | 1.02 | 1.20 | 0.58
-fatty | F | 15 | 436.99 | * | 513.28 | **336.32**
-knobby | F | 15 | * | * | **859.47** | *
-skinny | F | 15 | **234.72** | * | * | 795.51
-tic | T | 5 | **0.02** | 0.08 | 0.05 | 0.08
-tippy | T | 9 | **2.55** | 3.15 | 5.39 | 3.64
+Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+domino | T | 3 | 0.00 | 0.02 | 0.00 | 0.00 | 0.00 | 0.00
+ei | T | 5 | 0.20 | 0.06 | 0.12 | 0.05 | 0.16 | **0.04**
+elly | T | 7 | **0.35** | 1.02 | 1.20 | 0.58 | 0.66 | 1.06
+fatty | F | 15 | 436.99 | * | 513.28 | **336.32** | 619.84 | 536.47
+knobby | F | 15 | * | * | 859.47 | * | **725.89** | 1100.86
+skinny | F | 15 | **234.72** | * | * | 795.51 | * | 1172.27
+tic | T | 5 | **0.02** | 0.08 | 0.05 | 0.08 | 0.06 | 0.06
+tippy | T | 9 | **2.55** | 3.15 | 5.39 | 3.64 | 4.82 | 7.69
 
 **Tic-Tac-Toe**
 
-Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
---- | --- | --- | --- | --- | --- | ---
-3x3 (3) | F | 9 | **0.20** | 0.30 | 0.35 | 0.33
+Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+3x3 (3) | F | 9 | **0.20** | 0.30 | 0.35 | 0.33 | 0.63 | 0.40
 
 **Traffic-Light**
 
-Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
---- | --- | --- | --- | --- | --- | ---
-3x3 | T | 17 | **155.55** | * | 338.07 | *
-3x4 | ? | *15* | ***773.24*** | * | * | *
+Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+3x3 | T | 17 | **155.55** | * | 338.07 | * | 397.01 | 1123.12
+3x4 | ? | *15* | ***773.24*** | * | * | * | * | * 
 
 
 Version 2 with cheating variable has a similar performance as version 4. However, if we focus on the solver DepQBF, removing the

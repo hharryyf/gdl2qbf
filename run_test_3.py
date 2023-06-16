@@ -67,7 +67,7 @@ os.system(f"bash -c '{com2}'")
 #print(com1)
 com3 = f'time {solver} out.txt'
 command = Command(f"bash -c '{com3}'")
-command.run(timeout=1205)
+command.run(timeout=1505)
 
 # extract all non-static ground atoms
 # com4 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional} | python extract_ground.py'
