@@ -37,10 +37,17 @@ clingo [game.lp] [game-log-domain-v2.lp] [game/turn.lp] 2-player-turn-common-v4.
 
 ```
 
-* To solve a game
+* To solve a game that is alternating
 
 ```
 python run_test_2.py [game name] [-v2|-v4] extra-quantifier.lp [caqe|depqbf] [optional: game configuration]
+
+```
+
+* To solve a game that is turn-taking (note that from version 5, we can solve games like GTTT-2-1)
+
+```
+python run_test_3.py [game name] -v5 extra-quantifier.lp [caqe|depqbf] [optional: game configuration]
 
 ```
 
@@ -51,8 +58,8 @@ max-depth is equal to the maximum depth d' in ***italic*** such that there exist
 
 **Break-Through-1-row**
 
-Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4
---- | --- | --- | --- | --- | --- | ---
+Configuration | Result | max-depth | Caqe-v2  | DepQBF-v2 | Caqe-v4 | DepQBF-v4 | Caqe-v5 | DepQBF-v5
+--- | --- | --- | --- | --- | --- | --- | --- | ---
 3x3 | T | 5 | 0.00 | 0.00 | 0.00 | 0.00
 3x4 | T | 9 | 0.13 | 0.51 | 0.11 | **0.07**
 4x3 | T | 5 | **0.01** | 0.02 | 0.02 | 0.05
