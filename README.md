@@ -66,7 +66,7 @@ the preprocessor is either bloqqer (B) or a combination of bloqqer and qratpre++
 
 **Break-Through-1-row**
 
-Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
+Config | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 3x3 | T | 5 | 0.00 | 0.00 | 0.00 | 0.00 | 0.01 | 0.02
 3x4 | T | 9 | 0.13 | 0.51 | 0.11 | **0.07** | 0.24 | 0.32
@@ -77,7 +77,7 @@ Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-
 
 **Break-Through-2-row**
 
-Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
+Config | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 2x5 | F | 21 | 0.74 | * | **0.20** | 0.78 | 0.29 | 1.98
 2x6 | T | 15 | **2.86** | * | 7.23 | 4.74 | 7.56 | 8.59
@@ -87,7 +87,7 @@ Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-
 
 **Connect-3**
 
-Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
+Config | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 4x4 | T | 9 | 0.04 | 0.04 | 0.06 | 0.04 | 0.04 | 0.04
 5x5 | T | 9 | 0.14 | 0.19 | 0.19 | 0.17 | **0.12** | 0.17
@@ -95,7 +95,7 @@ Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-
 
 **Connect-4**
 
-Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
+Config | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 4x4 | F | 15 | **0.24** | 1.06 | 0.32 | 0.54 | 0.47 | 1.10
 5x4 | F | 19 | **30.43** | 171.33 | 43.54 | 122.42 | 93.67 | 177.24
@@ -103,7 +103,7 @@ Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-
 
 **GTTT-4x4-1-1**
 
-Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
+Config | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 domino | T | 3 | 0.00 | 0.02 | 0.00 | 0.00 | 0.00 | 0.00
 ei | T | 5 | 0.20 | 0.06 | 0.12 | 0.05 | 0.16 | **0.04**
@@ -116,13 +116,13 @@ tippy | T | 9 | **2.55** | 3.15 | 5.39 | 3.64 | 4.82 | 7.69
 
 **Tic-Tac-Toe**
 
-Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
+Config | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 3x3 (3) | F | 9 | **0.20** | 0.30 | 0.35 | 0.33 | 0.63 | 0.40
 
 **Traffic-Light**
 
-Configuration | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
+Config | Result | max-depth | C-BQ-v2  | D-BQ-v2 | C-BQ-v4 | D-BQ-v4 | C-B-v5 | D-B-v5
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 3x3 | T | 17 | **155.55** | * | 338.07 | * | 397.01 | 1123.12
 3x4 | ? | *15* | ***773.24*** | * | * | * | * | * 
