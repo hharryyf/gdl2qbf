@@ -11,5 +11,5 @@ terminated(T) :- terminated(T-1), time_domain(T).
 :- not terminated(T), move_time_domain(T), 0 {does(P, M, T)} 0, role(P).
 :- not terminated(T), move_time_domain(T), 2 {does(P, M, T)}, role(P).
 
-% uncomment this line to remove the "noop" actions from the move-domain
-% :- 0 {does(P, mark(4, 11), T) : _player_turn(P, T)} 0.
+%uncomment this line to remove the "noop" actions from the move-domain
+% move_time_domain(1..16).
