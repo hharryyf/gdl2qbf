@@ -10,13 +10,19 @@ moveL1 = set()
 curr_player = 'xplayer'
 other_player = 'oplayer'
 
+if len(sys.argv) < 2:
+    print('Usage: python find_move_domain_v2.py [all the game encoding files]')
+    exit(1)
+
 cmd1 = 'clingo --output=smodels '
-file = '> move_smodels.txt'
+file = ' move-domain.lp > move_smodels.txt'
+
 for i in range(1, len(sys.argv)):
     cmd1 += sys.argv[i]
     cmd1 += ' '
 
 cmd1 += file
+
 os.system(f"bash -c '{cmd1}'")
 
 with open('move_smodels.txt', 'r') as f:
@@ -61,12 +67,16 @@ with open('move_smodels.txt', 'r') as f:
                 #    moveL.add(interest)
                 # print(player, interest, TT)
 
+lit = sys.argv[1:].copy()
+lit.append('move-domain.lp')
+
+
 for mv in moveL1:
     cnt = 0
     start = time.time()
     #print(tuple(sys.argv[1:]))
     query = ':- 0 {does(P,' + mv + ', T) : _player_turn(P, T)} 0.'
-    answer = solve(files=tuple(sys.argv[1:]), inline=query, time_limit=20, nb_model=1)
+    answer = solve(files=tuple(lit), inline=query, time_limit=20, nb_model=1)
     for ans in answer:
         cnt += 1
     end = time.time()

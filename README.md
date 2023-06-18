@@ -26,7 +26,7 @@ clingo --output=smodels [game/game.lp] move-domain.lp | python find_move_domain.
 * To extract the move domain for version 4
 
 ```
-python find_move_domain_v2.py [all game files]  move-domain.lp 
+python find_move_domain_v2.py [all game files] 
 
 ```
 
