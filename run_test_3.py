@@ -56,7 +56,7 @@ os.system('sleep 1')
 with open('depth.txt') as f:
      d = int(f.readline())
 
-com5 = f'clingo --output=smodels 2-player-turn-common-dependency.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional} > smodels.txt'
+com5 = f'clingo --output=smodels 2-player-turn-common-dependency.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional} | lp2normal2 > smodels.txt'
 os.system(f"bash -c '{com5}'")
 os.system('sleep 1')
 com1 = f'python build_dependency.py  > extra-quantifier.lp'

@@ -36,6 +36,9 @@ with open('smodels.txt') as f:
             if line[0] == 1:
                 head = line[1]
                 for i in range(4, len(line)):
+                    if line[i] == 1:
+                        print('bad bad bad')
+                        exit(1)
                     edge.add((line[i], head))
             # head number_of_lit number_of_neg_lit bound [negative lit] [positive lit]
             elif line[0] == 2:
