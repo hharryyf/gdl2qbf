@@ -19,23 +19,17 @@ the non-static predicates by searching for all predicates reachable from true an
 * To extract the move domain for version 2
 
 ```
-clingo --output=smodels [game/game.lp] [game/turn.lp] move-domain.lp | python find_move_domain.py
+clingo --output=smodels [game/game.lp] move-domain.lp | python find_move_domain.py
 
 ```
 
 * To extract the move domain for version 4
 
 ```
-clingo --output=smodels [game.lp] [game/turn.lp] move-domain.lp | python find_move_domain_v2.py
+clingo --output=smodels [game.lp] move-domain.lp | python find_move_domain_v2.py
 
 ```
 
-* To find the maximum strategic depth of a game, keep increasing the depth in invalid_move.lp until there's no stable model
-
-```
-clingo [game.lp] [game-log-domain-v2.lp] [game/turn.lp] 2-player-turn-common-v4.lp invalid_move.lp
-
-```
 
 * To solve a game that is alternating
 
@@ -60,9 +54,7 @@ clingo [game name] turn-taking.lp
 
 ## Results
 
-We run the experiments on several families, with an iterative deepening approach. Each instance has a time limit of 1500s. If the solver can solve the instance with the maximum possible winning depth d, max-depth is equal to d. Otherwise,
-max-depth is equal to the maximum depth d' in ***italic*** such that there exists at least one solver configuration can solve the instance and print UNSAT. We record the time in the corresponding column, * means timeout. The solvers we use include Caqe (C), and DepQBF (D),
-the preprocessor is either bloqqer (B) or a combination of bloqqer and qratpre++ (BQ).
+We run the experiments on several families, with an iterative deepening approach. Each instance has a time limit of 1500s. If some solvers can solve the instance with the maximum possible winning depth d (we know the value of d for all of these games), max-depth is equal to d. Otherwise, max-depth is equal to the maximum depth d' in ***italic*** such that there exists at least one solver configuration can solve the instance and print UNSAT. We record the time in the corresponding column, * means timeout. The solvers we use include Caqe (C), and DepQBF (D), the preprocessor is either bloqqer (B) or a combination of bloqqer and qratpre++ (BQ).
 
 **Break-Through-1-row**
 
