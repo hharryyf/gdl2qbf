@@ -22,4 +22,6 @@ not_turn_taking :- take_turn(oplayer, T), take_turn(xplayer, T).
 
 % step(1)
 
-#show take_turn/2.
+% #show take_turn/2.
+% #show terminated/1.
+% #show does/3.

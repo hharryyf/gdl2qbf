@@ -41,9 +41,9 @@ for i in range(1, depth + 1):
     end = time.time()
     if end - start <= timelimit:
         if cnt == 0:
-            print(f'_player_turn(xplayer, {i}).')
+            print(f'_player_turn(xplayer, {i}) :- move_time_domain({i}).')
         else:
-            print(f'_player_turn(oplayer, {i}).')
+            print(f'_player_turn(oplayer, {i}) :- move_time_domain({i}).')
     else:
         start = time.time()
         cnt = 0
@@ -54,9 +54,9 @@ for i in range(1, depth + 1):
         end = time.time()
         if end - start <= timelimit:
             if cnt == 0:
-                print(f'_player_turn(oplayer, {i}).')
+                print(f'_player_turn(oplayer, {i}) :- move_time_domain({i}).')
             else:
-                print(f'_player_turn(xplayer, {i}).')
+                print(f'_player_turn(xplayer, {i}) :- move_time_domain({i}).')
         else:
-            print(f'_player_turn(oplayer, {i}).')
-            print(f'_player_turn(xplayer, {i}).')
+            print(f'_player_turn(oplayer, {i}) :- move_time_domain({i}).')
+            print(f'_player_turn(xplayer, {i}) :- move_time_domain({i}).')
