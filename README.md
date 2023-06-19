@@ -48,7 +48,7 @@ python run_test_3.py [game name] -v5 extra-quantifier.lp [caqe|depqbf] [optional
 * To proof a game that is turn-taking, just run the following command. If it is UNSAT, the game is turn-taking.
 
 ```
-clingo [game name] turn-taking.lp
+python find_turn.py game depth [optional configuration file]
 
 ```
 
