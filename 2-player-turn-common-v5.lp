@@ -28,7 +28,7 @@ terminated(T) :- terminated(T-1), time_domain(T).
 
 % existential player must take a move at its turn
 1 {does(P,M,T) : move_domain(M)} 1 :- not terminated(T), _player_turn(P, T).
-:- terminated(T), does(xplayer,M,T).
+:- terminated(T), does(P,M,T).
 
 
 % game must terminate
