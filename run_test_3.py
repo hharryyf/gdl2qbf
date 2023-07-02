@@ -1,6 +1,7 @@
 import subprocess, threading
 import os
 import sys
+import time
 
 class Command(object):
     def __init__(self, cmd):
@@ -34,8 +35,10 @@ config = sys.argv[2]
 extra = sys.argv[3]
 
 
-config = '-v5'
-config2 = '-v2'
+if config == '-v5':
+    config2 = '-v2'
+else:
+    config2 = '-v3'
 
 d = 22
 solver = sys.argv[4]
@@ -56,18 +59,24 @@ os.system('sleep 1')
 with open('depth.txt') as f:
      d = int(f.readline())
 
-com5 = f'clingo --output=smodels 2-player-turn-common-dependency.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional} | lp2normal2 > smodels.txt'
+com5 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional}  > smodels.txt'
 os.system(f"bash -c '{com5}'")
 os.system('sleep 1')
 com1 = f'python build_dependency.py  > extra-quantifier.lp'
-com2 = f"clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {extra} {optional} | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs |  bloqqer --keep=0 > out.txt"
+com2 = f"clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {extra} {optional} | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > out_plain.txt"
+com22 = 'bloqqer --keep=0 out_plain.txt > out.txt'
 os.system(f"bash -c '{com1}'")
 os.system('sleep 1')
 os.system(f"bash -c '{com2}'")
+os.system('sleep 1')
+start = time.time()
+os.system(f"bash -c '{com22}'")
+end = time.time()
+print('preprocessing time', round(end - start, 3))
 #print(com1)
 com3 = f'time {solver} out.txt'
 command = Command(f"bash -c '{com3}'")
-command.run(timeout=1505)
+command.run(timeout=1205)
 
 # extract all non-static ground atoms
 # com4 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional} | python extract_ground.py'
