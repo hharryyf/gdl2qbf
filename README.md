@@ -4,10 +4,9 @@ A converter from 2-player zero-sum turn-taking GDL-I games to QBF
 ## Assumption
 
 The game is a two-player zero-sum turn-taking game described in GDL-I. The player plays first is called xplayer, and
-the player plays second is called oplayer. In our current implementation, we only support games that the players take
-alternating moves (i.e. x moves - o moves - x moves...). Note that this restriction can be eased to the case that there does
-not exist a turn T such that T can be both an x-turn and an o-turn. For example, it is possible to relax the restriction 
-to GTTT-4x4-2-2, but not games like https://en.m.wikipedia.org/wiki/Dots_and_boxes.
+the player plays second is called oplayer. Turn-taking means in every game state at least 1 player has exactly 1 legal move.
+-v5 can handle games that are strictly turn-taking (you can assign a player that is taking the turn before the game start) 
+while -v6 can handle all turn-taking games.
 
 ## Method
 
