@@ -40,14 +40,14 @@ legal(xplayer, noop, T) :- true(control(oplayer), T), time_domain(T).
 legal(oplayer, noop, T) :- true(control(xplayer), T), time_domain(T).
 
 
-true(cell(X2, Y2, P), T + 1) :- role(P), does(P, moves(X1, Y1, X2, Y2), T), move_time_domain(T), not terminated(T).
+true(cell(X2, Y2, P), T + 1) :- role(P), does(P, moves(X1, Y1, X2, Y2), T), move_time_domain(T).
 
 
 true(cell(X3, Y3, S), T + 1) :- true(cell(X3, Y3, S), T), role(P), does(P, moves(X1, Y1, X2, Y2), T),
-                                distinctCell(X1, Y1, X3, Y3), distinctCell(X2, Y2, X3, Y3), not terminated(T), move_time_domain(T).
+                                distinctCell(X1, Y1, X3, Y3), distinctCell(X2, Y2, X3, Y3), move_time_domain(T).
 
-true(control(xplayer), T + 1) :- true(control(oplayer), T), move_time_domain(T), not terminated(T).
-true(control(oplayer), T + 1) :- true(control(xplayer), T), move_time_domain(T), not terminated(T).
+true(control(xplayer), T + 1) :- true(control(oplayer), T), move_time_domain(T).
+true(control(oplayer), T + 1) :- true(control(xplayer), T), move_time_domain(T).
 
 
 

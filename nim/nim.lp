@@ -14,12 +14,12 @@ legal(P, noop, T) :- true(control(X), T), role(P), X != P, time_domain(T).
 
 legal(P, reduce(X, N), T) :- true(control(P), T), true(heap(X, M), T), smaller(N, M), time_domain(T).
 
-true(heap(X, N), T + 1) :- does(P, reduce(X, N), T), move_time_domain(T), not terminated(T).
+true(heap(X, N), T + 1) :- does(P, reduce(X, N), T), move_time_domain(T).
 
-true(heap(X, N), T + 1) :- true(heap(X, N), T), does(P, reduce(Y, M), T), X != Y, move_time_domain(T), not terminated(T).
+true(heap(X, N), T + 1) :- true(heap(X, N), T), does(P, reduce(Y, M), T), X != Y, move_time_domain(T).
 
 
-true(control(P2), T + 1) :- true(control(P1), T), next_player(P1, P2), move_time_domain(T), not terminated(T).
+true(control(P2), T + 1) :- true(control(P1), T), next_player(P1, P2), move_time_domain(T).
 
 terminal(T) :- true(heap(a, 0), T), true(heap(b, 0), T), true(heap(c, 0), T), true(heap(d, 0), T), time_domain(T).
 

@@ -9,15 +9,15 @@ true(control(xplayer), 1).
 
 legal(P, mark(X, Y), T) :- true(control(P), T), true(cell(X, Y, blank), T), time_domain(T).
 legal(P, noop, T) :- role(P), not true(control(P), T), time_domain(T).
-true(control(oplayer), T + 1) :- true(control(xplayer), T), move_time_domain(T), not terminated(T).
-true(control(xplayer), T + 1) :- true(control(oplayer), T), move_time_domain(T), not terminated(T).
+true(control(oplayer), T + 1) :- true(control(xplayer), T), move_time_domain(T).
+true(control(xplayer), T + 1) :- true(control(oplayer), T), move_time_domain(T).
 
 
 
-true(cell(M, N, x), T + 1) :- does(xplayer, mark(M, N), T), move_time_domain(T), not terminated(T).
-true(cell(M, N, o), T + 1) :- does(oplayer, mark(M, N), T), move_time_domain(T), not terminated(T).
-true(cell(M, N, C), T + 1) :- true(cell(M, N, C), T), does(P, mark(X, Y), T), X != M, move_time_domain(T), not terminated(T).
-true(cell(M, N, C), T + 1) :- true(cell(M, N, C), T), does(P, mark(X, Y), T), Y != N, move_time_domain(T), not terminated(T).
+true(cell(M, N, x), T + 1) :- does(xplayer, mark(M, N), T), move_time_domain(T).
+true(cell(M, N, o), T + 1) :- does(oplayer, mark(M, N), T), move_time_domain(T).
+true(cell(M, N, C), T + 1) :- true(cell(M, N, C), T), does(P, mark(X, Y), T), X != M, move_time_domain(T).
+true(cell(M, N, C), T + 1) :- true(cell(M, N, C), T), does(P, mark(X, Y), T), Y != N, move_time_domain(T).
 %true(cell(M, N, x), T + 1) :- true(cell(M, N, x), T), move_time_domain(T), not terminated(T).
 %true(cell(M, N, o), T + 1) :- true(cell(M, N, o), T), move_time_domain(T), not terminated(T).
 % true(cell(M, N, blank), T + 1) :- true(cell(M, N, blank), T), does(P, mark(X, Y), T), X != M, move_time_domain(T), not terminated(T).
