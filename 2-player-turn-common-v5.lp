@@ -16,7 +16,7 @@ terminated(T) :- terminated(T-1), time_domain(T).
 
 % existential player must take a move at its turn
 1 {does(P,M,T) : move_domain(M)} 1 :- not terminated(T), _player_turn(P, T).
-%:- terminated(T), does(P,M,T).
+:- terminated(T), does(P,M,T).
 % game must terminate
 :- 0 {terminated(T) : time_domain(T)} 0.
 % x player must reach goal 100 or the universal player cheat

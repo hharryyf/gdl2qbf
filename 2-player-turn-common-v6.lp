@@ -5,7 +5,7 @@ _player_turn(P, T) :- role(P), move_time_domain(T).
 time_domain(1).
 time_domain(T+1) :- move_time_domain(T).
 
-{does(xplayer, M, T) : move_domain(M)} :- _player_turn(xplayer,T).
+%{does(xplayer, M, T) : move_domain(M)} :- _player_turn(xplayer,T).
 {moveL(oplayer, M, T) : log_domain(M)} :- _player_turn(oplayer,T).
 
 % additional constraints for the GDL encoding.
