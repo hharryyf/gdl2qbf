@@ -1,0 +1,58 @@
+-- \{{\tt :-}\}
+
+-- use either \tt or a different font for the keywords in theorem 1
+
+-- for definition 3: assume we add an additional existential quantifier block X_{n+1}
+
+-- below definition 1, "..." should be eliminated
+
+-- change greater than or equal to to \geq, similar to smaller.
+
+-- change syntax for set {:} to {|}
+
+-- change ohow Ext(G) is defined, put the clauses terminated(T) :- terminal(T). into Ext(G) directly.
+
+-- definition 4, apply only to terminate state S_{n+1} must contain terminal. goal is always unique at terminal state.
+
+-- definition 5, inductive definition a_{x} is "a" winning action 
+
+-- definition 5, the game and state should be consistent
+
+logarithmic encoding. explain the big and means put all the clauses 
+
+-- explain what T_{max} is.
+
+-- theorem 3 needs to be fixed grammar
+
+-- theorem 6 analog -> analogous
+
+put the constrution to definition or figure
+
+new things in details 
+
+
+August 19th - October 10th
+
+slow does quantification
+
+        v5-caqe  v6-caqe v5-depqbf v6-depqbf
+c-3-4x4   0.06     0.10    0.07       0.14
+c-3-5x5   0.21     0.41    0.29       0.24
+c-4-4x4   3.44     2.54    0.84       0.95
+c-4-5x5   *        *       *          *
+bt-2x5    37.95    35.41    0.72       0.85
+bt-2x6    134.14   103.41   9.76      19.43
+bt-3x4    14.90    24.85    0.82       0.31
+bt-4x4    *         *       443.17   326.59
+bt-3x5    *         *       *          *     -- 1009.12 for v5-depqbf 
+1-elly   4.04      2.61     2.26      3.71
+1-fatty   *         *       480.60    697.67
+1-knobby  *         *        *         *
+1-skinny  *         *       721.55   662.90
+1-tippy   79.31   39.61     10.32     20.31
+2-elly    0.08    0.09      0.05      0.08
+2-fatty   *         *       217.47    247.82        
+2-knobby  0.07    0.09      0.06      0.06
+2-skinny   *        *       662.04    713.13
+2-tippy  0.13    0.14      0.04       0.05
+

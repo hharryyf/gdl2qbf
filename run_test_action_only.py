@@ -62,7 +62,7 @@ with open('depth.txt') as f:
 com5 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional}  > smodels.txt'
 os.system(f"bash -c '{com5}'")
 os.system('sleep 1')
-com1 = f'python build_dependency.py  > extra-quantifier.lp'
+com1 = f'python build_dependency_action.py  > extra-quantifier.lp'
 com2 = f"clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {extra} {optional} | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > out_plain.txt"
 com22 = 'bloqqer --keep=0 out_plain.txt > out.txt'
 os.system(f"bash -c '{com1}'")
