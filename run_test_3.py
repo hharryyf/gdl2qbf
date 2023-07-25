@@ -37,8 +37,12 @@ extra = sys.argv[3]
 
 if config == '-v5':
     config2 = '-v2'
-else:
+elif config == '-v6':
     config2 = '-v3'
+elif config == '-v7':
+    config2 = '-v4'
+elif config == '-v8':
+    config2 = '-v5'
 
 d = 22
 solver = sys.argv[4]
@@ -76,7 +80,7 @@ print('preprocessing time', round(end - start, 3))
 #print(com1)
 com3 = f'time {solver} out.txt'
 command = Command(f"bash -c '{com3}'")
-command.run(timeout=1005)
+command.run(timeout=1205)
 
 # extract all non-static ground atoms
 # com4 = f'clingo --output=smodels 2-player-turn-common{config}.lp  {game}/{game}.lp {game}/turn.lp {game}/{game}-log-domain{config2}.lp {optional} | python extract_ground.py'
