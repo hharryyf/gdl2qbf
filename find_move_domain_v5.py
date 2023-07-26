@@ -112,9 +112,9 @@ for mv in moveO:
 movelist = list(moves)
 moveL = list(moveL)
 moves = list(moves)
-moves.sort()
-moveL.sort()
-movelist.sort()
+#moves.sort()
+#moveL.sort()
+#movelist.sort()
 
 tol, lenl = 0, len(moveL)
 
