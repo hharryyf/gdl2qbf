@@ -5,7 +5,7 @@ role(oplayer).
 
 true(control(xplayer), 1).
 
-move_time_domain(1..25).
+move_time_domain(1..21).
 
 
 legal(xplayer, noop, T) :- true(control(oplayer), T), time_domain(T).
