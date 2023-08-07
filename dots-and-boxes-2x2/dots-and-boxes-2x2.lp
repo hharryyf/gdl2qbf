@@ -32,8 +32,8 @@ true(line(X1, Y1, X2, Y2), T+1) :- true(line(X1, Y1, X2, Y2), T), move_time_doma
 
 legal(P, noop, T) :- role(P), not true(control(P), T), time_domain(T).
 
-v_drawn(X, Y1, X, Y2, T) :- does(P, draw(X, Y1, X, Y2), T), move_time_domain(T).
-h_drawn(X1, Y, X2, Y, T) :- does(P, draw(X1, Y, X2, Y), T), move_time_domain(T).    
+v_drawn(X, Y1, X, Y2, T) :- does(P, draw(X, Y1, X, Y2), T), time_domain(T).
+h_drawn(X1, Y, X2, Y, T) :- does(P, draw(X1, Y, X2, Y), T), time_domain(T).    
 
 box_formed(X1, Y1, T) :- v_drawn(X1, Y1, X1, Y2, T), true(line(X1, Y2, X2, Y2), T), true(line(X1, Y1, X2, Y1), T), true(line(X2, Y1, X2, Y2), T), time_domain(T).
 
