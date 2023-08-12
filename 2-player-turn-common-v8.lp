@@ -1,12 +1,12 @@
 % does(P, M, T) :- _player_turn(O,T), _other_player(O,P), not terminated(T), move_time_domain(T), legal(P, M, T).
 
-_player_turn(P, T) :- role(P), move_time_domain(T).
+% _player_turn(P, T) :- role(P), move_time_domain(T).
 
 time_domain(1).
 time_domain(T+1) :- move_time_domain(T).
 
 %{does(xplayer, M, T) : move_domain(M)} :- _player_turn(xplayer,T).
-{moveL(oplayer, M, T) : log_domain(M)} :- _player_turn(oplayer,T).
+{moveL(oplayer, M, T) : log_domain(M)} :- move_time_domain(T).
 
 % additional constraints for the GDL encoding.
 
@@ -16,7 +16,7 @@ terminated(T) :- terminated(T-1), time_domain(T).
 :- does(P,M,T), not legal(P,M,T).
 
 % existential player must take a move at its turn
-1 {does(P,M,T) : move_domain(P, M)} 1 :- not terminated(T), _player_turn(P, T).
+1 {does(P,M,T) : move_domain(P, M)} 1 :- not terminated(T), move_time_domain(T), role(P).
 :- terminated(T), does(P,M,T).
 % game must terminate
 :- 0 {terminated(T) : time_domain(T)} 0.
