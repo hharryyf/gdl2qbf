@@ -19,7 +19,7 @@ true(cell(3, 5, oplayer), 1).
 
 true(control(xplayer), 1).
 
-move_time_domain(1..17).
+move_time_domain(1..19).
 
 %move_domain(moves(1..3, 1..3, 1..3, 1..3)).
 
