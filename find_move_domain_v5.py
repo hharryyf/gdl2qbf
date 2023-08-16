@@ -37,12 +37,9 @@ with open('move_smodels.txt', 'r') as f:
             state += 1
         elif state == 1:
             atom = line.split()[-1]
-            if atom[:21] == '_player_turn(xplayer,':
-                xturn.add(int(atom[21:-1]))
-                oturn.add(int(atom[21:-1]))
-            elif atom[:21] == '_player_turn(oplayer,':
-                oturn.add(int(atom[21:-1]))
-                xturn.add(int(atom[21:-1]))
+            if atom[:17] == 'move_time_domain(':
+                xturn.add(int(atom[17:-1]))
+                oturn.add(int(atom[17:-1]))
 
 #print(xturn)
 #print(oturn)    
@@ -134,9 +131,9 @@ for i in range(0, 1 << tol):
                 print('not ', end='')
             if k == tol - 1:
                 if i == 0:
-                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T), _player_turn(oplayer, T), not terminated(T).')
+                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T), move_time_domain(T), not terminated(T).')
                 else:
-                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T), _player_turn(oplayer, T), not terminated(T).')
+                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T), move_time_domain(T), not terminated(T).')
             else:
                 print(f'moveL(oplayer,{k+1},T' + '), ', end='')
     j += 1
