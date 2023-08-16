@@ -13,3 +13,19 @@ prelim 1 + 1/4
 method 2 + 1/2
 experiment 2
 conclusion 1/4
+
+
+1. literature review  
+2. plan for next year
+3. milestone
+4. what has been done
+5. presentation to be easy to understand
+
+paper ready 
+
+start the literature review 
+
+single GDL-2 games 
+
+
+
