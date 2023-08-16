@@ -35,13 +35,9 @@ config = sys.argv[2]
 extra = sys.argv[3]
 
 
-if config == '-v5':
-    config2 = '-v2'
-elif config == '-v6':
-    config2 = '-v3'
-elif config == '-v7':
+if config == '-v7':
     config2 = '-v4'
-elif config == '-v8':
+else:
     config2 = '-v5'
 
 d = 22

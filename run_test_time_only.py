@@ -36,10 +36,7 @@ extra = sys.argv[3]
 
 
 config = '-v8'
-if config == '-v7':
-    config2 = '-v4'
-else:
-    config2 = '-v5'
+config2 = '-v5'
 
 d = 22
 solver = sys.argv[4]
