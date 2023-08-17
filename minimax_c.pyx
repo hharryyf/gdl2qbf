@@ -158,9 +158,17 @@ cdef class Solver:
                     reward = min(reward, self.minimax(depth - 1, s_next))
                 if reward == 0:
                     break
-        
+
         if len(self.table) <= 1000000:
-            self.table[state] = (depth, reward)
+            if state not in self.table:
+                self.table[state] = (depth, reward)
+            else:
+                if reward == 1:
+                    self.table[state] = (depth, reward)
+                else:
+                    entry = self.table[state]
+                    if entry[0] < depth:
+                        self.table[state] = (depth, reward)
         return reward
 
 
