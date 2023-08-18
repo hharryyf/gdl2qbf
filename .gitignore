@@ -13,5 +13,7 @@ build/
 __pycache__/
 minimax_c.cpython-310-x86_64-linux-gnu.so
 minimax_c.c
+.vscode/
+minimax_solver
 
 
