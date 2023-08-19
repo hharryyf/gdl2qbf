@@ -1,3 +1,5 @@
+:- set_prolog_flag(stack_limit, 10000000000).
+
 role(xplayer).
 role(oplayer).
 init(control(xplayer)).

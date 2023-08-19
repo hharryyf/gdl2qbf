@@ -10,7 +10,7 @@ legal(black, drop(X)) :- true(control(black)), columnOpen(X).
 
 next(cell(X, 1, Player)) :- does(Player, drop(X)), columnEmpty(X).
 
-next(cell(X, Y2, Player)) :- does(Player, drop(X)), cellOpen(X, Y2), succ(Y1, Y2), not(cellOpen(X, Y1)).
+next(cell(X, Y2, Player)) :- does(Player, drop(X)), cellOpen(X, Y2), succ(Y1, Y2), \+ cellOpen(X, Y1).
 
 next(cell(X, Y, Player)) :- true(cell(X, Y, Player)).
 
@@ -22,25 +22,25 @@ terminal :- line(red).
 
 terminal :- line(black).
 
-terminal :- not(boardOpen).
+terminal :- \+ boardOpen.
 
 goal(red, 100) :- line(red).
 
-goal(red, 50) :- not(line(red)), not(line(black)), not(boardOpen).
+goal(red, 50) :- \+ line(red), \+ line(black), \+ boardOpen.
 
-goal(red, 0) :- not(line(red)), not(line(black)), boardOpen.
+goal(red, 0) :- \+ line(red), \+ line(black), boardOpen.
 
 goal(red, 0) :- line(black).
 
 goal(black, 100) :- black(red).
 
-goal(black, 50) :- not(line(red)), not(line(black)), not(boardOpen).
+goal(black, 50) :- \+ line(red), \+ line(black), \+ boardOpen.
 
-goal(black, 0) :- not(line(red)), not(line(black)), boardOpen.
+goal(black, 0) :- \+ line(red), \+ line(black), boardOpen.
 
 goal(black, 0) :- line(red).
 
-cellOpen(X, Y) :- x(X), y(Y), not(true(cell(X, Y, red))), not(true(cell(X, Y, black))). 
+cellOpen(X, Y) :- x(X), y(Y), \+ true(cell(X, Y, red)), \+ true(cell(X, Y, black)). 
 
 columnOpen(X) :- cellOpen(X, 4).
 
