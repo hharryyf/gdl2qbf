@@ -6,8 +6,10 @@
 std::string player;
 std::map<std::vector<std::string>, std::pair<int, int>> table;
 /*
+    swipl-ld -goal true -o minimax_solver -ld g++ -g -O minimax_solver.cpp
+    
     command line arguments
-    [game prolog file] [player name] [depth]
+    ./minimax_solver [game prolog file] [player name] [depth]
 */ 
 int cnt = 0, add_cnt = 0, remove_cnt = 0, iteration = 0;
 bool role_ok() {

@@ -87,7 +87,13 @@ python find_turn.py break-through-3x4 19 break-through-3x4/two.lp
 
 ```
 
+* To compile & run the C++ minimax + TT solver
 
+```
+swipl-ld -goal true -o minimax_solver -ld g++ -g -O minimax_solver.cpp
+    
+./minimax_solver [game prolog file] [player name] [depth]
+```
 
 ## Reference
 
