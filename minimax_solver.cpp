@@ -20,6 +20,8 @@ bool role_ok() {
         while(q.next_solution() ) {    
             role.insert(av[0].as_string());
         }
+
+        q.close_destroy();
     } catch ( PlExceptionBase &ex ) { 
         std::cerr << ex.what() << std::endl;
     }
@@ -42,6 +44,8 @@ std::tuple<std::vector<std::vector<std::string>>, int, int> get_legal() {
                 other_name = av[0].as_string();
             }
         } 
+
+        q.close_destroy();
     } catch ( PlExceptionBase &ex ) { 
         std::cerr << "in legal " << ex.what() << std::endl;
     }
@@ -67,6 +71,8 @@ bool is_terminal() {
         while (q.next_solution()) {
             return true;
         }
+
+        q.close_destroy();
     } catch ( PlExceptionBase &ex ) { 
         std::cerr << "in terminal " << ex.what() << std::endl;
     }
@@ -86,6 +92,8 @@ int get_reward() {
             }
             //std::cout << std::string((char *) av[0]) << " " << atoi((char *) av[1]) << std::endl;
         }
+
+        q.close_destroy();
     } catch ( PlExceptionBase &ex ) { 
         std::cerr << "in reward " <<  ex.what() << std::endl;
     }
@@ -112,6 +120,8 @@ std::vector<std::string> query_next() {
             st.insert(curr);
             //std::cout << curr << std::endl;
         }
+
+        q.close_destroy();
     } catch ( PlExceptionBase &ex ) { 
         std::cerr << "in next " <<  ex.what() << std::endl;
     }    
@@ -134,6 +144,8 @@ std::vector<std::string> query_init() {
             std::string curr = std::string("true(").append(av[0].as_string()).append(")");
             st.insert(curr);
         }
+
+        q.close_destroy();
     } catch ( PlExceptionBase &ex ) { 
         std::cerr << ex.what() << std::endl;
         exit(1);
@@ -152,11 +164,11 @@ void add_facts(std::vector<std::string> &facts) {
         try {
             //std::cout << "add fact " << res << std::endl;
             add_cnt++;
-            PL_STRINGS_MARK();
+            //PL_STRINGS_MARK();
             if (!PlCall(res)) {
                 std::cerr << "Error Add!" << std::endl;
             }
-            PL_STRINGS_RELEASE();
+            //PL_STRINGS_RELEASE();
         } catch ( PlExceptionBase &ex ) { 
             std::cerr << "in add " << ex.what() << " " << res << std::endl;
             exit(1);
@@ -172,12 +184,13 @@ void remove_facts(std::vector<std::string> &facts) {
         res.append(")");
         try {
             remove_cnt++;
-            PL_STRINGS_MARK();
+            //PL_STRINGS_MARK();
             //std::cout << "remove fact " << res << std::endl;
             if (!PlCall(res)) {
                 std::cerr << "Error retract!" << std::endl;
             }
-            PL_STRINGS_RELEASE();
+            
+            //PL_STRINGS_RELEASE();
         }
         catch ( PlException &ex ) { 
             std::cerr << "in remove " << ex.what() << " " << res << std::endl;
@@ -291,20 +304,26 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
     }
 
 
-    if ((int) table.size() <= 3000000) {
-        if (table.find(s_true) == table.end()) {
+    if (table.size() >= 1000000) {
+        while ((int) table.size() >= 500000) {
+            auto v = *table.begin();
+            table.erase(v.first);
+        }
+    }
+
+    if (table.find(s_true) == table.end()) {
+        table[s_true] = std::make_pair(depth, reward);
+    } else {
+        if (reward == 1) {
             table[s_true] = std::make_pair(depth, reward);
         } else {
-            if (reward == 1) {
+            auto entry = table[s_true];
+            if (entry.first < depth) {
                 table[s_true] = std::make_pair(depth, reward);
-            } else {
-                auto entry = table[s_true];
-                if (entry.first < depth) {
-                    table[s_true] = std::make_pair(depth, reward);
-                }
             }
         }
     }
+    
     
     return reward;
 }
