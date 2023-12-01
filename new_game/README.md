@@ -15,7 +15,7 @@ In this framework, G -> Ext(G) was done by Thielscher in the single-player paper
 
 Our contributions are:
 
-* We designed the correct algorithm of converting an arbitrary two-player zero-sum turn-taking GDL game to a QBF instance (i.e., the Ext(G) -> QASP(G) part in the diagram).
+* We designed the correct algorithm of converting an arbitrary two-player zero-sum turn-taking GDL game to a QBF instance.
 
 * We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
 
