@@ -11,7 +11,7 @@ G -> Ext(G) -> QASP(G) -> QBF
 
 ```
 
-In this framework, G -> Ext(G) was done by Thielscher in the single-player paper, QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
+In this framework, G -> Ext(G) was done by Thielscher in the single-player game paper, QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
 
 Our contributions are:
 
