@@ -6,7 +6,7 @@ In our paper, we designed the framework of converting a two-player zero-sum turn
 The framework is as follows:
 ```
 
-G &rarr Ext(G) &rarr QASP(G) &rarr QBF
+G &rarr; Ext(G) &rarr; QASP(G) &rarr; QBF
 
 
 ```
