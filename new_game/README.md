@@ -18,6 +18,8 @@
 
 * Put Ext(G) inside game.lp
 
+* **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G**
+
 * Note that you must specify move_time_domain inside game.lp indicating the horizon of the game
 
 * For example, to solve a game with horizon 9, just put 
