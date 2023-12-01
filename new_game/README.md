@@ -1,4 +1,24 @@
-# Tool chain for converting Time-extended GDL Ext(G) to QBF with encoding method GD
+# Tool chain for converting Time-extended GDL Ext(G) to QBF with the quantification method GD
+
+## Contribution
+
+In our paper, we designed the framework of converting a two-player zero-sum turn-taking GDL game G to a QBF instance.
+The framework is as follows:
+```
+
+G &rarr Ext(G) &rarr QASP(G) &rarr QBF
+
+
+```
+
+In this framework, G &rarr Ext(G) was done by Thielscher in the single-player paper, QASP(G) &rarr QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
+
+Our contributions are:
+
+* We designed the correct algorithm of converting an arbitrary two-player zero-sum turn-taking GDL game to a QBF instance.
+
+* We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
+
 
 ## Dependencies
 
