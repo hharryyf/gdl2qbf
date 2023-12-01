@@ -38,7 +38,7 @@ Our contributions are:
 
 * Put Ext(G) inside game.lp
 
-* **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G**
+* **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G, and the 2 players must call xplayer and oplayer respectively**
 
 * Note that you must specify move_time_domain inside game.lp indicating the horizon of the game
 
