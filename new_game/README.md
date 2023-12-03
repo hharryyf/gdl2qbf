@@ -36,6 +36,8 @@ Our contributions are:
 
 * Dependencies of qasp2qbf https://github.com/potassco/qasp2qbf 
 
+* KIF to Ext(G) converter by Thielscher (check SinglePlayer/)
+
 ## How to use the tool
 
 * First create the answer set program Ext(G) according definition 2 in our paper or with EXTTranslator.ecl
