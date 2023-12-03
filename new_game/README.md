@@ -11,7 +11,9 @@ G -> Ext(G) -> QASP(G) -> QBF
 
 ```
 
-In this framework, G -> Ext(G) was done by Thielscher in the single-player game paper, QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
+In this framework, G -> Ext(G) was done by Thielscher in the single-player game paper (check the referenced tool SinglePlayer, and run the eclipse prolog file EXTTranslator.ecl), QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
+
+More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without the "or" operator to Ext(G). For simplicity, the author didn't handle the "or" operator automatically, although it can be done automatically. Check the difference between GameDescriptions/tic-tac-toe.gdl and Translations/tic-tac-toe.asp to see how the tool works.
 
 Our contributions are:
 
@@ -28,26 +30,20 @@ Our contributions are:
 
 * Python 3+
 
+* ECLiPSe Prolog https://eclipseclp.org/
+
 * QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ 
 
 * Dependencies of qasp2qbf https://github.com/potassco/qasp2qbf 
 
 ## How to use the tool
 
-* First create the answer set program Ext(G) according definition 2 in our paper
+* First create the answer set program Ext(G) according definition 2 in our paper or with EXTTranslator.ecl
 
-* Put Ext(G) inside game.lp
+* Paste Ext(G) inside game.lp
 
 * **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G, and the 2 players must call xplayer and oplayer respectively**
 
-* Note that you must specify move_time_domain inside game.lp indicating the horizon of the game
-
-* For example, to solve a game with horizon 9, just put 
-
-```
-move_time_domain(1..9).
-
-```
 
 * Then just run the following command, out_plain.txt will store the unpreprocessed QBF instance translated from Ext(G)
 

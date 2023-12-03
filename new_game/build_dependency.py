@@ -1,6 +1,6 @@
 import queue
 
-bad = ['log_domain(', 'time_domain(', 'move_time_domain(', 'move_domain(', '_']
+bad = ['log_domain(', 'timedomain(', 'movetimedomain(', 'move_domain(', '_']
 # with open('static_rel.txt', 'r') as f:
 #     lines = f.readlines()
 #     #print(lines)
