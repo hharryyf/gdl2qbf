@@ -67,8 +67,10 @@ remove_tautologies(Clause, NewClause) :-
 	 	append_strings(Clause1, ".", NewClause).
 
 remove_tautologies(Clause, NewClause) :-
-	append_strings(Clause1, ", distinct.", Clause) ->
-		append_strings(Clause1, ".", NewClause).
+	append_strings(String1, Clause2, Clause),
+	append_strings(Clause1, ", distinct", String1) ->
+		append_strings(Clause1, Clause2, NewClause1),
+		remove_tautologies(NewClause1, NewClause).
 
 remove_tautologies(Clause, Clause).
 

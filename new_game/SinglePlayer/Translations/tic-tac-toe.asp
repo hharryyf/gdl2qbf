@@ -4,12 +4,12 @@ role(oplayer).
 index(1).
 index(2).
 index(3).
-base(cell(X36178, X36179, b)) :- index(X36178), index(X36179), domdomain(2, X36178), domdomain(2, X36179).
-base(cell(X36178, X36179, x)) :- index(X36178), index(X36179), domdomain(2, X36178), domdomain(2, X36179).
-base(cell(X36178, X36179, o)) :- index(X36178), index(X36179), domdomain(2, X36178), domdomain(2, X36179).
-base(control(X36178)) :- role(X36178), domdomain(4, X36178).
-input(X36176, mark(X36179, X36180)) :- index(X36179), index(X36180), role(X36176), domdomain(4, X36176), domdomain(2, X36179), domdomain(2, X36180).
-input(X36176, noop) :- role(X36176), domdomain(4, X36176).
+base(cell(X35228, X35229, b)) :- index(X35228), index(X35229), domdomain(2, X35228), domdomain(2, X35229).
+base(cell(X35228, X35229, x)) :- index(X35228), index(X35229), domdomain(2, X35228), domdomain(2, X35229).
+base(cell(X35228, X35229, o)) :- index(X35228), index(X35229), domdomain(2, X35228), domdomain(2, X35229).
+base(control(X35228)) :- role(X35228), domdomain(4, X35228).
+input(X35226, mark(X35229, X35230)) :- index(X35229), index(X35230), role(X35226), domdomain(4, X35226), domdomain(2, X35229), domdomain(2, X35230).
+input(X35226, noop) :- role(X35226), domdomain(4, X35226).
 true(cell(1, 1, b), 1).
 true(cell(1, 2, b), 1).
 true(cell(1, 3, b), 1).
@@ -20,33 +20,32 @@ true(cell(3, 1, b), 1).
 true(cell(3, 2, b), 1).
 true(cell(3, 3, b), 1).
 true(control(xplayer), 1).
-true(cell(X36178, X36179, x), X36198 + 1) :- does(xplayer, mark(X36178, X36179), X36198), true(cell(X36178, X36179, b), X36198), movetimedomain(X36198), domdomain(2, X36178), domdomain(2, X36179).
-true(cell(X36178, X36179, o), X36198 + 1) :- does(oplayer, mark(X36178, X36179), X36198), true(cell(X36178, X36179, b), X36198), movetimedomain(X36198), domdomain(2, X36178), domdomain(2, X36179).
-true(cell(X36178, X36179, X36180), X36195 + 1) :- true(cell(X36178, X36179, X36180), X36195), X36180 != b, movetimedomain(X36195), domdomain(2, X36178), domdomain(2, X36179), domdomain(3, X36180).
-true(cell(X36178, X36179, b), X36203 + 1) :- does(X36184, mark(X36187, X36188), X36203), true(cell(X36178, X36179, b), X36203), X36178 != X36187, domdomain(4, X36184), domdomain(2, X36187), domdomain(2, X36188), movetimedomain(X36203), domdomain(2, X36178), domdomain(2, X36179).
-true(cell(X36178, X36179, b), X36203 + 1) :- does(X36184, mark(X36187, X36188), X36203), true(cell(X36178, X36179, b), X36203), X36179 != X36188, domdomain(4, X36184), domdomain(2, X36187), domdomain(2, X36188), movetimedomain(X36203), domdomain(2, X36178), domdomain(2, X36179).
-true(control(xplayer), X36186 + 1) :- true(control(oplayer), X36186), movetimedomain(X36186).
-true(control(oplayer), X36186 + 1) :- true(control(xplayer), X36186), movetimedomain(X36186).
-row(X36176, X36177, X36203) :- true(cell(X36176, 1, X36177), X36203), true(cell(X36176, 2, X36177), X36203), true(cell(X36176, 3, X36177), X36203), timedomain(X36203), domdomain(2, X36176), domdomain(3, X36177).
-column(X36176, X36177, X36203) :- true(cell(1, X36176, X36177), X36203), true(cell(2, X36176, X36177), X36203), true(cell(3, X36176, X36177), X36203), timedomain(X36203), domdomain(2, X36176), domdomain(3, X36177).
-diagonal(X36176, X36202) :- true(cell(1, 1, X36176), X36202), true(cell(2, 2, X36176), X36202), true(cell(3, 3, X36176), X36202), timedomain(X36202), domdomain(3, X36176).
-diagonal(X36176, X36202) :- true(cell(1, 3, X36176), X36202), true(cell(2, 2, X36176), X36202), true(cell(3, 1, X36176), X36202), timedomain(X36202), domdomain(3, X36176).
-line(X36176, X36183) :- row(X36180, X36176, X36183), domdomain(2, X36180), timedomain(X36183), domdomain(3, X36176).
-line(X36176, X36183) :- column(X36180, X36176, X36183), domdomain(2, X36180), timedomain(X36183), domdomain(3, X36176).
-line(X36176, X36182) :- diagonal(X36176, X36182), timedomain(X36182), domdomain(3, X36176).
-open(X36184) :- true(cell(X36180, X36181, b), X36184), domdomain(2, X36180), domdomain(2, X36181), timedomain(X36184).
-legal(X36176, mark(X36179, X36180), X36196) :- true(cell(X36179, X36180, b), X36196), true(control(X36176), X36196), timedomain(X36196), domdomain(4, X36176), domdomain(2, X36179), domdomain(2, X36180).
-legal(xplayer, noop, X36185) :- true(control(oplayer), X36185), timedomain(X36185).
-legal(oplayer, noop, X36185) :- true(control(xplayer), X36185), timedomain(X36185).
-goal(xplayer, 100, X36183) :- line(x, X36183), timedomain(X36183).
-goal(xplayer, 50, X36195) :- not line(x, X36195), not line(o, X36195), not open(X36195), timedomain(X36195).
-goal(xplayer, 0, X36183) :- line(o, X36183), timedomain(X36183).
-goal(oplayer, 100, X36183) :- line(o, X36183), timedomain(X36183).
-goal(oplayer, 50, X36195) :- not line(x, X36195), not line(o, X36195), not open(X36195), timedomain(X36195).
-goal(oplayer, 0, X36183) :- line(x, X36183), timedomain(X36183).
-terminal(X36180) :- line(x, X36180), timedomain(X36180).
-terminal(X36180) :- line(o, X36180), timedomain(X36180).
-terminal(X36179) :- not open(X36179), timedomain(X36179).
+true(cell(X35228, X35229, x), X35248 + 1) :- does(xplayer, mark(X35228, X35229), X35248), true(cell(X35228, X35229, b), X35248), movetimedomain(X35248), domdomain(2, X35228), domdomain(2, X35229).
+true(cell(X35228, X35229, o), X35248 + 1) :- does(oplayer, mark(X35228, X35229), X35248), true(cell(X35228, X35229, b), X35248), movetimedomain(X35248), domdomain(2, X35228), domdomain(2, X35229).
+true(cell(X35228, X35229, X35230), X35245 + 1) :- true(cell(X35228, X35229, X35230), X35245), X35230 != b, movetimedomain(X35245), domdomain(2, X35228), domdomain(2, X35229), domdomain(3, X35230).
+true(cell(X35228, X35229, b), X35259 + 1) :- does(X35234, mark(X35237, X35238), X35259), true(cell(X35228, X35229, b), X35259), ( X35228 != X35237 ; X35229 != X35238 ), domdomain(4, X35234), domdomain(2, X35237), domdomain(2, X35238), movetimedomain(X35259), domdomain(2, X35228), domdomain(2, X35229).
+true(control(xplayer), X35236 + 1) :- true(control(oplayer), X35236), movetimedomain(X35236).
+true(control(oplayer), X35236 + 1) :- true(control(xplayer), X35236), movetimedomain(X35236).
+row(X35226, X35227, X35253) :- true(cell(X35226, 1, X35227), X35253), true(cell(X35226, 2, X35227), X35253), true(cell(X35226, 3, X35227), X35253), timedomain(X35253), domdomain(2, X35226), domdomain(3, X35227).
+column(X35226, X35227, X35253) :- true(cell(1, X35226, X35227), X35253), true(cell(2, X35226, X35227), X35253), true(cell(3, X35226, X35227), X35253), timedomain(X35253), domdomain(2, X35226), domdomain(3, X35227).
+diagonal(X35226, X35252) :- true(cell(1, 1, X35226), X35252), true(cell(2, 2, X35226), X35252), true(cell(3, 3, X35226), X35252), timedomain(X35252), domdomain(3, X35226).
+diagonal(X35226, X35252) :- true(cell(1, 3, X35226), X35252), true(cell(2, 2, X35226), X35252), true(cell(3, 1, X35226), X35252), timedomain(X35252), domdomain(3, X35226).
+line(X35226, X35233) :- row(X35230, X35226, X35233), domdomain(2, X35230), timedomain(X35233), domdomain(3, X35226).
+line(X35226, X35233) :- column(X35230, X35226, X35233), domdomain(2, X35230), timedomain(X35233), domdomain(3, X35226).
+line(X35226, X35232) :- diagonal(X35226, X35232), timedomain(X35232), domdomain(3, X35226).
+open(X35234) :- true(cell(X35230, X35231, b), X35234), domdomain(2, X35230), domdomain(2, X35231), timedomain(X35234).
+legal(X35226, mark(X35229, X35230), X35246) :- true(cell(X35229, X35230, b), X35246), true(control(X35226), X35246), timedomain(X35246), domdomain(4, X35226), domdomain(2, X35229), domdomain(2, X35230).
+legal(xplayer, noop, X35235) :- true(control(oplayer), X35235), timedomain(X35235).
+legal(oplayer, noop, X35235) :- true(control(xplayer), X35235), timedomain(X35235).
+goal(xplayer, 100, X35233) :- line(x, X35233), timedomain(X35233).
+goal(xplayer, 50, X35245) :- not line(x, X35245), not line(o, X35245), not open(X35245), timedomain(X35245).
+goal(xplayer, 0, X35233) :- line(o, X35233), timedomain(X35233).
+goal(oplayer, 100, X35233) :- line(o, X35233), timedomain(X35233).
+goal(oplayer, 50, X35245) :- not line(x, X35245), not line(o, X35245), not open(X35245), timedomain(X35245).
+goal(oplayer, 0, X35233) :- line(x, X35233), timedomain(X35233).
+terminal(X35230) :- line(x, X35230), timedomain(X35230).
+terminal(X35230) :- line(o, X35230), timedomain(X35230).
+terminal(X35229) :- not open(X35229), timedomain(X35229).
 domdomain(1, cell).
 domdomain(1, control).
 domdomain(2, 1).
