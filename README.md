@@ -1,5 +1,8 @@
 # Tool chain for converting two-player zero-sum turn-taking GDL to QBF
 
+
+The converter will translate a two-player zero-sum turn-taking GDL to a QBF instance, the QBF instance is true if and only if xplayer can achieve 100 points in the GDL game no matter what oplayer performs.
+
 ## Contribution
 
 In our paper, we designed the framework of converting a two-player zero-sum turn-taking GDL game G to a QBF instance.
@@ -13,7 +16,7 @@ G -> Ext(G) -> QASP(G) -> QBF
 
 In this framework, G -> Ext(G) was done by Thielscher in the single-player game paper (check the referenced tool SinglePlayer, and run the eclipse prolog file EXTTranslator.ecl), QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
 
-More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without the "or" operator to Ext(G). For simplicity, the author didn't handle the "or" operator automatically, although it can be done automatically. Check the difference between GameDescriptions/tic-tac-toe.gdl and Translations/tic-tac-toe.asp to see how the tool works.
+More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without **nested** "or" operator to Ext(G). For simplicity, the author didn't handle the nested "or" operator automatically, although it can be done automatically. Check the difference between GameDescriptions/tic-tac-toe.gdl and Translations/tic-tac-toe.asp to see how the tool works. Even if EXTranslator.ecl can handel 1-level "or" operator, for performance reasons, it is recommended that all the "or" operators in the KIF input are removed manually.
 
 Our contributions are:
 
@@ -69,6 +72,6 @@ python extg2qbf.py SinglePlayer/Translations/gttt-4x4-2-2-tippy.asp
 
 ```
 
-[caqe|depqbf] out.txt
+[caqe|depqbf] game_bloqqer.qdimacs
 
 ```

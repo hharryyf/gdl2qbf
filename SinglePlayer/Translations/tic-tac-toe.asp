@@ -23,7 +23,7 @@ true(control(xplayer), 1).
 true(cell(X35228, X35229, x), X35248 + 1) :- does(xplayer, mark(X35228, X35229), X35248), true(cell(X35228, X35229, b), X35248), movetimedomain(X35248), domdomain(2, X35228), domdomain(2, X35229).
 true(cell(X35228, X35229, o), X35248 + 1) :- does(oplayer, mark(X35228, X35229), X35248), true(cell(X35228, X35229, b), X35248), movetimedomain(X35248), domdomain(2, X35228), domdomain(2, X35229).
 true(cell(X35228, X35229, X35230), X35245 + 1) :- true(cell(X35228, X35229, X35230), X35245), X35230 != b, movetimedomain(X35245), domdomain(2, X35228), domdomain(2, X35229), domdomain(3, X35230).
-true(cell(X35228, X35229, b), X35259 + 1) :- does(X35234, mark(X35237, X35238), X35259), true(cell(X35228, X35229, b), X35259), ( X35228 != X35237 ; X35229 != X35238 ), domdomain(4, X35234), domdomain(2, X35237), domdomain(2, X35238), movetimedomain(X35259), domdomain(2, X35228), domdomain(2, X35229).
+true(cell(X35228, X35229, b), X35259 + 1) :- does(X35234, mark(X35237, X35238), X35259), true(cell(X35228, X35229, b), X35259), 1 { X35228 != X35237 ; X35229 != X35238 }, domdomain(4, X35234), domdomain(2, X35237), domdomain(2, X35238), movetimedomain(X35259), domdomain(2, X35228), domdomain(2, X35229).
 true(control(xplayer), X35236 + 1) :- true(control(oplayer), X35236), movetimedomain(X35236).
 true(control(oplayer), X35236 + 1) :- true(control(xplayer), X35236), movetimedomain(X35236).
 row(X35226, X35227, X35253) :- true(cell(X35226, 1, X35227), X35253), true(cell(X35226, 2, X35227), X35253), true(cell(X35226, 3, X35227), X35253), timedomain(X35253), domdomain(2, X35226), domdomain(3, X35227).

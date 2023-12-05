@@ -178,11 +178,11 @@ aspify_rule(Head, Tail, Out) :-
 aspify_literals([], _, [], _).
 aspify_literals([A | As], T, DomainDeclarations, Out) :-
 	( A = (B1 ; B2) ->
-		write(Out, '( '),
+		write(Out, '1 { '),
 		aspify_literals([B1], T, Db1, Out),
 		write(Out, 'distinct ; '),
 		aspify_literals([B2], T, Db2, Out),
-		write(Out, 'distinct )'),
+		write(Out, 'distinct }'),
 		strict_union(Db1, Db2, D1)
 	  ;
 	    ( A = (not B) ->
