@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; GTTT-4x4-1-1 Knobby
+;;; GTTT-4x4-1-1 Tippy
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -133,21 +133,40 @@
 (succ 1 2) (succ 2 3) (succ 3 4)
 
 
-
 (<= (line ?x) 
-(true (cell ?x ?y1 ?x))
-(true (cell ?x ?y2 ?x))
-(true (cell ?x ?y3 ?x))
-(true (cell ?x ?y4 ?x))
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x1 ?y2 ?x))
+(true (cell ?x2 ?y2 ?x))
+(true (cell ?x2 ?y3 ?x))
 (succ ?y1 ?y2)
-(succ ?y2 ?y3)
-(succ ?y3 ?y4))
+(succ ?x1 ?x2)
+(succ ?y2 ?y3))
+
 
 (<= (line ?x) 
-(true (cell ?x1 ?y ?x))
-(true (cell ?x2 ?y ?x))
-(true (cell ?x3 ?y ?x))
-(true (cell ?x4 ?y ?x))
+(true (cell ?x1 ?y2 ?x))
+(true (cell ?x1 ?y3 ?x))
+(true (cell ?x2 ?y1 ?x))
+(true (cell ?x2 ?y2 ?x))
+(succ ?y1 ?y2)
 (succ ?x1 ?x2)
-(succ ?x2 ?x3)
-(succ ?x3 ?x4))
+(succ ?y2 ?y3))
+
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x2 ?y1 ?x))
+(true (cell ?x2 ?y2 ?x))
+(true (cell ?x3 ?y2 ?x))
+(succ ?y1 ?y2)
+(succ ?x1 ?x2)
+(succ ?x2 ?x3))
+
+(<= (line ?x) 
+(true (cell ?x1 ?y2 ?x))
+(true (cell ?x2 ?y1 ?x))
+(true (cell ?x2 ?y2 ?x))
+(true (cell ?x3 ?y1 ?x))
+(succ ?y1 ?y2)
+(succ ?x1 ?x2)
+(succ ?x2 ?x3))

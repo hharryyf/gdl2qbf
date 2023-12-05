@@ -1,105 +1,74 @@
-# QBF Encoding for Two player Zero Sum Turn-Taking GDL-I game
-A converter from 2-player zero-sum turn-taking GDL-I games to QBF
+# Tool chain for converting two-player zero-sum turn-taking GDL to QBF
 
+## Contribution
 
-## Usage
-
-* To extract the move domain for version 7, the game must be strictly turn-taking
-
-```
-python find_move_domain_v4.py [all game files] 
-
+In our paper, we designed the framework of converting a two-player zero-sum turn-taking GDL game G to a QBF instance.
+The framework is as follows:
 ```
 
-* To extract the move domain for version 8
+G -> Ext(G) -> QASP(G) -> QBF
 
-```
-python find_move_domain_v5.py [all game files] 
 
 ```
 
-Example use of the games in the paper:
+In this framework, G -> Ext(G) was done by Thielscher in the single-player game paper (check the referenced tool SinglePlayer, and run the eclipse prolog file EXTTranslator.ecl), QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
 
-```
-python find_move_domain_v4.py connect-3-4x4/connect-3-4x4.lp connect-3-4x4/turn.lp
+More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without the "or" operator to Ext(G). For simplicity, the author didn't handle the "or" operator automatically, although it can be done automatically. Check the difference between GameDescriptions/tic-tac-toe.gdl and Translations/tic-tac-toe.asp to see how the tool works.
 
-```
-```
-python find_move_domain_v4.py gttt-4x4-1-1/gttt-4x4-1-1.lp gttt-4x4-1-1/turn.lp gttt-4x4-1-1/fatty.lp
+Our contributions are:
 
-```
-```
-python find_move_domain_v4.py break-through-3x4/break-through-3x4.lp break-through-3x4/turn.lp break-through-3x4/two.lp
+* We designed the correct algorithm of converting an arbitrary two-player zero-sum turn-taking GDL game to a QBF instance.
 
-```
-```
-python find_move_domain_v5.py dots-and-boxes-2x2/dots-and-boxes-2x2.lp dots-and-boxes-2x2/turn.lp
-
-```
+* We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
 
 
-* To solve a game that is strictly turn-taking (note that from version 7, we can solve games like GTTT-2-2)
+## Dependencies
+
+* Clingo https://github.com/potassco/guide/releases
+
+* QBF solver Caqe https://github.com/ltentrup/caqe and DepQBF  https://github.com/lonsing/depqbf 
+
+* Python 3+
+
+* ECLiPSe Prolog https://eclipseclp.org/
+
+* QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ 
+
+* Dependencies of qasp2qbf https://github.com/potassco/qasp2qbf 
+
+* KIF to Ext(G) converter by Thielscher (check SinglePlayer/)
+
+## How to use the tool
+
+* First create the answer set program Ext(G) according definition 2 in our paper or with EXTTranslator.ecl form a GDL in KIF
+
+* **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G, and the 2 players must call xplayer and oplayer respectively**
+
+
+* Then just run the following command, out_plain.txt will store the unpreprocessed QBF instance translated from Ext(G)
 
 ```
-python run_test_3.py [game name] [-v7|-v8] extra-quantifier.lp [caqe|depqbf] [optional: game configuration]
-
-```
-
-Example use of the games in the paper:
-
-```
-python run_test_3.py connect-4-4x4 -v7 extra-quantifier.lp caqe 
-
-```
-
-```
-python run_test_3.py gttt-4x4-1-1 -v7 extra-quantifier.lp caqe gttt-4x4-1-1/fatty.lp 
-
-```
-
-```
-python run_test_3.py break-through-3x4 -v7 extra-quantifier.lp caqe break-through-3x4/two.lp 
+python extg2qbf.py [optional]  
 
 ```
 
+optional is the path to the Temporal-extended ASP.
+Note that if optional is not specified, the program will create the QBF instance based on the Temporal-extended ASP in game.lp.
 
-* To proof a game that is turn-taking, just run the following command. It will print out the turn for every player
 
-```
-python find_turn.py game depth [optional configuration file]
-
-```
-
-Example use of the games in the paper:
+Example usage:
 
 ```
-python find_turn.py connect-4-4x4 15
+python extg2qbf.py SinglePlayer/Translations/gttt-4x4-2-2-tippy.asp
 
 ```
 
-```
-python find_turn.py gttt-4x4-1-1 15 gttt-4x4-1-1/fatty.lp
+* The unpreprocessed instance is stored in game.qdimacs, the bloqqer preprocessed instance is stored in game_bloqqer.qdimacs
+
+* To solve the instance, just run
 
 ```
 
-```
-python find_turn.py break-through-3x4 19 break-through-3x4/two.lp
+[caqe|depqbf] out.txt
 
 ```
-
-* To compile & run the C++ minimax + TT solver
-
-```
-swipl-ld -goal true -o minimax_solver -ld g++ -g -O minimax_solver.cpp
-    
-./minimax_solver [game prolog file] [player name] [depth]
-```
-
-## Reference
-
-Note that this piece of work relies on https://github.com/potassco/qasp2qbf for converting QASP to QBF.
-
-It relies on https://github.com/lonsing/depqbf and https://github.com/ltentrup/caqe for QBF solving, and 
-https://github.com/lonsing/qratpreplus and https://fmv.jku.at/bloqqer/ for preprocessing.
-
-

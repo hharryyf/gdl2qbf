@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; GTTT-4x4-1-1 Knobby
+;;; GTTT-4x4-1-1 Fatty
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -133,80 +133,12 @@
 (succ 1 2) (succ 2 3) (succ 3 4)
 
 
-
 (<= (line ?x) 
 (true (cell ?x1 ?y1 ?x))
 (true (cell ?x1 ?y2 ?x))
-(true (cell ?x1 ?y3 ?x))
 (true (cell ?x2 ?y1 ?x))
-(succ ?y1 ?y2)
+(true (cell ?x2 ?y2 ?x))
 (succ ?x1 ?x2)
-(succ ?y2 ?y3))
-
-(<= (line ?x) 
-(true (cell ?x1 ?y1 ?x))
-(true (cell ?x1 ?y2 ?x))
-(true (cell ?x1 ?y3 ?x))
-(true (cell ?x2 ?y1 ?x))
-(succ ?y1 ?y2)
-(succ ?x2 ?x1)
-(succ ?y2 ?y3))
-
-(<= (line ?x) 
-(true (cell ?x1 ?y1 ?x))
-(true (cell ?x1 ?y2 ?x))
-(true (cell ?x1 ?y3 ?x))
-(true (cell ?x2 ?y3 ?x))
-(succ ?y1 ?y2)
-(succ ?x1 ?x2)
-(succ ?y2 ?y3))
-
-
-(<= (line ?x) 
-(true (cell ?x1 ?y1 ?x))
-(true (cell ?x1 ?y2 ?x))
-(true (cell ?x1 ?y3 ?x))
-(true (cell ?x2 ?y3 ?x))
-(succ ?y1 ?y2)
-(succ ?x2 ?x1)
-(succ ?y2 ?y3))
-
-
-
-(<= (line ?x) 
-(true (cell ?x1 ?y1 ?x))
-(true (cell ?x2 ?y1 ?x))
-(true (cell ?x3 ?y1 ?x))
-(true (cell ?x1 ?y2 ?x))
-(succ ?y1 ?y2)
-(succ ?x1 ?x2)
-(succ ?x2 ?x3))
-
-(<= (line ?x) 
-(true (cell ?x1 ?y1 ?x))
-(true (cell ?x2 ?y1 ?x))
-(true (cell ?x3 ?y1 ?x))
-(true (cell ?x1 ?y2 ?x))
-(succ ?y2 ?y1)
-(succ ?x1 ?x2)
-(succ ?x2 ?x3))
-
-(<= (line ?x) 
-(true (cell ?x1 ?y1 ?x))
-(true (cell ?x2 ?y1 ?x))
-(true (cell ?x3 ?y1 ?x))
-(true (cell ?x3 ?y2 ?x))
-(succ ?y1 ?y2)
-(succ ?x1 ?x2)
-(succ ?x2 ?x3))
-
-(<= (line ?x) 
-(true (cell ?x1 ?y1 ?x))
-(true (cell ?x2 ?y1 ?x))
-(true (cell ?x3 ?y1 ?x))
-(true (cell ?x3 ?y2 ?x))
-(succ ?y2 ?y1)
-(succ ?x1 ?x2)
-(succ ?x2 ?x3))
+(succ ?y1 ?y2))
 
 

@@ -1,17 +1,17 @@
 import queue
 
-bad = ['log_domain(', 'timedomain(', 'movetimedomain(', 'move_domain(', '_']
-# with open('static_rel.txt', 'r') as f:
-#     lines = f.readlines()
-#     #print(lines)
-#     state = 0
-#     for line in lines:
-#         line = line.strip()
-#         if line == '0':
-#             state += 1
-#         else:
-#             if state == 1:
-#                 bad.append(line)
+bad = ['log_domain(', 'time_domain(', 'move_time_domain(', 'move_domain(', '_']
+with open('static_rel.txt', 'r') as f:
+    lines = f.readlines()
+    #print(lines)
+    state = 0
+    for line in lines:
+        line = line.strip()
+        if line == '0':
+            state += 1
+        else:
+            if state == 1:
+                bad.append(line)
 
 state = 0
 
@@ -68,11 +68,6 @@ with open('smodels.txt') as f:
             if ok:
                 mxv = max(mxv, vid)
                 newl = atom.replace('(', ',').replace(')',',').split(',')
-
-                if atom[:13] != 'does(xplayer,' and atom[:6] != 'moveL(':
-                    vertex[vid] = (atom, -1)
-                    continue
-
                 lv = -1
                 for i in range(len(newl) - 1, -1, -1):
                     if len(newl[i]) and newl[i] != '\n':
