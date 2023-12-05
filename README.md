@@ -1,4 +1,4 @@
-# Tool chain for converting two-player zero-sum turn-taking GDL to QBF
+# Software for converting two-player zero-sum turn-taking GDL to QBF
 
 
 The converter will translate a two-player zero-sum turn-taking GDL to a QBF instance, the QBF instance is true if and only if xplayer can achieve 100 points in the GDL game no matter what oplayer performs.
@@ -37,9 +37,9 @@ Our contributions are:
 
 * QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ 
 
-* Dependencies of qasp2qbf https://github.com/potassco/qasp2qbf 
+* qasp2qbf by Fandinno et al and its dependencies (i.e., lp2normal2, lp2acyc, lp2sat) https://github.com/potassco/qasp2qbf https://research.ics.aalto.fi/software/asp/download/
 
-* KIF to Ext(G) converter by Thielscher (check SinglePlayer/)
+* KIF to Ext(G) converter by Thielscher (check the "run" function in SinglePlayer/EXTTranslator.ecl)
 
 ## How to use the tool
 
