@@ -1,7 +1,5 @@
 import sys
 import os
-from clyngor import solve
-import time
 
 state = 0
 moves = set()

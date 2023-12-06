@@ -1,17 +1,7 @@
 import queue
 
 bad = ['log_domain(', 'timedomain(', 'movetimedomain(', 'move_domain(', '_']
-# with open('static_rel.txt', 'r') as f:
-#     lines = f.readlines()
-#     #print(lines)
-#     state = 0
-#     for line in lines:
-#         line = line.strip()
-#         if line == '0':
-#             state += 1
-#         else:
-#             if state == 1:
-#                 bad.append(line)
+
 
 state = 0
 
@@ -37,7 +27,7 @@ with open('smodels.txt') as f:
                 head = line[1]
                 for i in range(4, len(line)):
                     if line[i] == 1:
-                        print('bad bad bad')
+                        print('Unexpected Error')
                         exit(1)
                     edge.add((line[i], head))
             # head number_of_lit number_of_neg_lit bound [negative lit] [positive lit]
@@ -56,7 +46,7 @@ with open('smodels.txt') as f:
                     for h in head:
                         edge.add((line[i], h))
             else:
-                print('NO NO NO!')
+                print('Cannot handle rule of type 4+ in Clingo!')
                 exit(1)
         elif state == 1:
             line = line.split()
@@ -163,14 +153,3 @@ for i in range(1, mxv + 1):
     if i in vertex and visited[i] != 1:
         print(f'_exists(1,{vertex[i][0]}).')
 
-# with open("graph.txt", "w") as f:
-#     print(mxv, len(vertex), len(edge), file=f)
-#     for v in vertex.items():
-#         print(v[0], v[1][0], v[1][1], file=f)
-#     for e in edge:
-#         print(e[0], e[1], file=f)
-#     for uv in universal.items():
-#         print(len(uv[1]), uv[0], file=f)
-#         for u in uv[1]:
-#             print(u, end=' ', file=f)
-#         print('', file=f)
