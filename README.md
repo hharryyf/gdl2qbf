@@ -1,7 +1,7 @@
 # Software for converting two-player zero-sum turn-taking GDL to QBF
 
 
-The converter will translate a two-player zero-sum turn-taking GDL to a QBF instance, the QBF instance is true if and only if xplayer can achieve 100 points in the GDL game no matter what oplayer performs.
+The converter will translate a two-player zero-sum turn-taking GDL to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points in the GDL game no matter what the other player performs.
 
 ## Contribution
 
@@ -45,24 +45,21 @@ Our contributions are:
 
 * First create the answer set program Ext(G) according definition 2 in our paper or with EXTTranslator.ecl form a GDL in KIF
 
-* **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G, and the 2 players must call xplayer and oplayer respectively**
+* **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G, and the 2 players must be specified when you run the following python command**
 
 
 * Then just run the following command, out_plain.txt will store the unpreprocessed QBF instance translated from Ext(G)
 
 ```
-python extg2qbf.py [optional]  
+python extg2qbf.py [optional]  [name of the current player] [name of the other player]
 
 ```
-
-optional is the path to the Temporal-extended ASP.
-Note that if optional is not specified, the program will create the QBF instance based on the Temporal-extended ASP in game.lp.
 
 
 Example usage:
 
 ```
-python extg2qbf.py SinglePlayer/Translations/gttt-4x4-2-2-tippy.asp
+python extg2qbf.py SinglePlayer/Translations/gttt-4x4-2-2-tippy.asp xplayer oplayer
 
 ```
 

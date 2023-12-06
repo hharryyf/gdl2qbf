@@ -16,16 +16,18 @@ if len(sys.argv) < 2:
     print('Usage: python find_move_domain_v5.py [all the game encoding files]')
     exit(1)
 
-cmd1 = 'clingo --output=smodels '
-file = ' move-domain.lp > move_smodels.txt'
+if len(sys.argv) >= 4:
+    curr_player = sys.argv[2]
+    other_player = sys.argv[3]
 
-for i in range(1, len(sys.argv)):
-    cmd1 += sys.argv[i]
-    cmd1 += ' '
+cmd1 = 'clingo --output=smodels '
+file = f'{sys.argv[1]} move-domain.lp > move_smodels.txt'
+
 
 cmd1 += file
 
 os.system(f"bash -c '{cmd1}'")
+
 
 xturn = set()
 oturn = set()
@@ -71,36 +73,23 @@ with open('move_smodels.txt', 'r') as ff:
                         player += s
                     if ss == 2:
                         TT += s
-                #if interest == 'noop':
-                #    continue
+                
                 TT = int(TT[1:])
-                #print(TT)
+                
                 if player == curr_player and TT in xturn:
                     moveX.add(interest)
-                    #moves.add(f'move_domain(xplayer, {interest})')
                 elif player == other_player and TT in oturn:
                     moveO.add(interest)
-                    #moves.add(f'move_domain(oplayer, {interest})')
-                    #moveL.add(interest)
-                #if interest == 'noop':
-                #    continue
-
-                #if TT % 2 == 1 and player == curr_player:
-                #moves.add('move_domain(' + interest + ')')
-                #moveL1.add(interest)
-                #elif TT % 2 == 0 and player == other_player:
-                #    moves.add('move_domain(' + interest + ')')
-                #    moveL.add(interest)
-                # print(player, interest, TT)
+                    
 
 lit = sys.argv[1:].copy()
 lit.append('move-domain.lp')
 
 for mv in moveX:
-    moves.add('move_domain(xplayer,' + mv + ')')
+    moves.add(f'move_domain({curr_player},' + mv + ')')
 
 for mv in moveO:
-    moves.add('move_domain(oplayer,' + mv + ')')
+    moves.add(f'move_domain({other_player},' + mv + ')')
     moveL.add(mv)
 
 movelist = list(moves)
@@ -122,17 +111,17 @@ print()
 j = 0
 for i in range(0, 1 << tol):
     if j < len(moveL):
-        print(f'does(oplayer, {moveL[j]}, T) :- ', end='')
+        print(f'does({other_player}, {moveL[j]}, T) :- ', end='')
         for k in range(0, tol):
             if ((i >> k) & 1) == 0:
                 print('not ', end='')
             if k == tol - 1:
                 if i == 0:
-                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T), movetimedomain(T), not terminated(T).')
+                    print(f'moveL({other_player},{k+1},T' + '), ' + f'legal({other_player}, {moveL[j]}, T), movetimedomain(T), not terminated(T).')
                 else:
-                    print(f'moveL(oplayer,{k+1},T' + '), ' + f'legal(oplayer, {moveL[j]}, T), movetimedomain(T), not terminated(T).')
+                    print(f'moveL({other_player},{k+1},T' + '), ' + f'legal({other_player}, {moveL[j]}, T), movetimedomain(T), not terminated(T).')
             else:
-                print(f'moveL(oplayer,{k+1},T' + '), ', end='')
+                print(f'moveL({other_player},{k+1},T' + '), ', end='')
     j += 1
 
 print()
