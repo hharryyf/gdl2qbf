@@ -39,11 +39,10 @@ Our contributions are:
 
 * QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ 
 
-* qasp2qbf by Fandinno et al and its dependencies (i.e., lp2normal2, lp2acyc, lp2sat) https://github.com/potassco/qasp2qbf https://research.ics.aalto.fi/software/asp/download/
+* qasp2qbf and its dependencies (i.e., lp2normal2, lp2acyc, lp2sat) https://github.com/potassco/qasp2qbf https://research.ics.aalto.fi/software/asp/download/
 
-* KIF to Ext(G) converter by Thielscher: check the "run" function in SinglePlayer/EXTTranslator.ecl, you need to specify two parameters the [ name ] of the game (assume the game is put in GameDescriptions of format [ name ].gdl), and the horizon of the game.
+* KIF to Ext(G) converter: the example usage of this tool can be found in SinglePlayer/.
 
-Example usage is compile the SinglePlayer/EXTTranslator.ecl and feed the function run with parameters "tic-tac-toe" and 9, then you will get the Ext(G) of tic-tac-toe in Translations/tic-tac-toe.asp with depth 9.
 
 ## Usage
 
