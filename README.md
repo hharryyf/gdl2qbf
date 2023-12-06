@@ -1,5 +1,7 @@
-# Software for converting two-player zero-sum turn-taking GDL to QBF
+# gdl2qbf
+A converter from two-player zero-sum turn-taking GDL to QBF
 
+## Description
 
 The converter will translate a two-player zero-sum turn-taking GDL to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points in the GDL game no matter what the other player performs.
 
@@ -14,7 +16,7 @@ G -> Ext(G) -> QASP(G) -> QBF
 
 ```
 
-In this framework, G -> Ext(G) was done by Thielscher in the single-player game paper (check the referenced tool SinglePlayer, and run the eclipse prolog file EXTTranslator.ecl), QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
+In this framework, G -> Ext(G) was done by Michael Thielscher in the single-player game paper (check the referenced tool in SinglePlayer/, and run the eclipse prolog file EXTTranslator.ecl), QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
 
 More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without **nested** "or" operator to Ext(G). For simplicity, the author didn't handle the nested "or" operator automatically, although it can be done automatically. Check the difference between GameDescriptions/tic-tac-toe.gdl and Translations/tic-tac-toe.asp to see how the tool works. Even if EXTranslator.ecl can handle 1-level "or" operator, for performance reasons, it is recommended that all the "or" operators in the KIF input are removed manually.
 
@@ -43,7 +45,7 @@ Our contributions are:
 
 Example usage is compile the SinglePlayer/EXTTranslator.ecl and feed the function run with parameters "tic-tac-toe" and 9, then you will get the Ext(G) of tic-tac-toe in Translations/tic-tac-toe.asp with depth 9.
 
-## How to use the tool
+## Usage
 
 * First create the answer set program Ext(G) according definition 2 in our paper or with EXTTranslator.ecl form a GDL in KIF
 
@@ -58,10 +60,10 @@ python extg2qbf.py [optional]  [name of the current player] [name of the other p
 ```
 
 
-Example usage:
+Example:
 
 ```
-python extg2qbf.py SinglePlayer/Translations/gttt-4x4-2-2-tippy.asp xplayer oplayer
+python extg2qbf.py SinglePlayer/Translations/gttt-4x4-1-1-tippy.asp xplayer oplayer
 
 ```
 
