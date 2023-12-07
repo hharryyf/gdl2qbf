@@ -54,7 +54,7 @@ def logarithmic_encoding(gamefile, current, other, logfile):
 
     xturn, oturn = set(), set()
     logfile = open(file=logfile,mode='w')
-
+    print(f'% logarithmic encoding of the game {gamefile}', file=logfile)
     with open('move_smodels.txt', 'r') as f:
         for line in f:
             line = line.strip()

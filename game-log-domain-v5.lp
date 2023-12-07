@@ -1,3 +1,4 @@
+% logarithmic encoding of the game SinglePlayer/Translations/traffic-3x3.asp
 log_domain(1..5).
 
 does(oplayer, mark(1,1,green), T) :- not moveL(oplayer,1,T), not moveL(oplayer,2,T), not moveL(oplayer,3,T), not moveL(oplayer,4,T), not moveL(oplayer,5,T), legal(oplayer, mark(1,1,green), T), movetimedomain(T), not terminated(T).
