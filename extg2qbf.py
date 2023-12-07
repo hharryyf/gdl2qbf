@@ -52,9 +52,7 @@ def logarithmic_encoding(gamefile, current, other, logfile):
     cmd1 = f'clingo --output=smodels {gamefile} move-domain.lp > move_smodels.txt'
     os.system(f"bash -c '{cmd1}'")
 
-    xturn = set()
-    oturn = set()
-
+    xturn, oturn = set(), set()
     logfile = open(file=logfile,mode='w')
 
     with open('move_smodels.txt', 'r') as f:
@@ -78,12 +76,9 @@ def logarithmic_encoding(gamefile, current, other, logfile):
             elif state == 1:
                 atom = line.split()[-1]
                 if atom[:6] == 'legal(':
-                    ss = 0
-                    sm = 0
+                    ss, sm = 0, 0
                     does3 = atom[6:-1]
-                    interest = ''
-                    player = ''
-                    TT = ''
+                    interest, player, TT = '', '', ''
                     for s in does3:    
                         if s == '(':
                             sm += 1
@@ -100,7 +95,6 @@ def logarithmic_encoding(gamefile, current, other, logfile):
                             TT += s
                     
                     TT = int(TT[1:])
-                    
                     if player == curr_player and TT in xturn:
                         moveX.add(interest)
                     elif player == other_player and TT in oturn:
@@ -113,20 +107,16 @@ def logarithmic_encoding(gamefile, current, other, logfile):
         moves.add(f'move_domain({other_player},' + mv + ')')
         moveL.add(mv)
 
-    movelist = list(moves)
     moveL = list(moveL)
     moves = list(moves)
     moves.sort()
     moveL.sort()
-    movelist.sort()
-
+    
     tol, lenl = 0, len(moveL)
-
     while (1 << tol) < lenl:
         tol += 1
 
     print(f'log_domain(1..{tol}).', file=logfile)
-
     print(file=logfile)
 
     j = 0
@@ -146,34 +136,26 @@ def logarithmic_encoding(gamefile, current, other, logfile):
         j += 1
 
     print(file=logfile)
-
     for move in moves:
         print(move + '.', file=logfile)
     print(file=logfile)
-
     logfile.close()
 
-def build_quantifier(gamefile, logfile, quantifier):
+def build_quantifier(current, other, gamefile, logfile, quantifier):
     '''
         Construct the quantifier prefix of the QASP based on the encoding method GD
         specify the gamefile, the logarithmic encoding file, output to the quantifier file
     '''
 
     cmd = f'clingo --output=smodels 2-player-turn-common-v8.lp  {gamefile} {logfile}  > smodels.txt'
-
     os.system(f"bash -c '{cmd}'")
 
     outputfile = open(file=quantifier, mode='w')
 
     bad = ['log_domain(', 'timedomain(', 'movetimedomain(', 'move_domain(', '_']
-
-    state = 0
-
+    state, mxv = 0, 0
     edge = set()
-
     vertex, universal, exist = {}, {}, {}
-
-    mxv = 0
 
     with open('smodels.txt') as f:
         for line in f:
@@ -220,8 +202,8 @@ def build_quantifier(gamefile, logfile, quantifier):
                 if ok:
                     mxv = max(mxv, vid)
                     newl = atom.replace('(', ',').replace(')',',').split(',')
-
-                    if atom[:13] != 'does(xplayer,' and atom[:6] != 'moveL(':
+                    lencurr = len(f'does({current},')
+                    if atom[:lencurr] != f'does({current},' and atom[:6] != 'moveL(':
                         vertex[vid] = (atom, -1)
                         continue
 
@@ -232,7 +214,7 @@ def build_quantifier(gamefile, logfile, quantifier):
                             break
                     if lv != -1:
                         vertex[vid] = (atom, lv)
-                        if atom[:13] == 'does(xplayer,':
+                        if atom[:lencurr] == f'does({current},':
                             if lv in exist:
                                 exist[lv].append(vid)
                             else:
@@ -244,8 +226,6 @@ def build_quantifier(gamefile, logfile, quantifier):
                             else:
                                 universal[lv] = []
                                 universal[lv].append(vid)
-
-
 
     for e in edge:
         mxv = max(mxv, max(e[0], e[1]))
@@ -269,16 +249,13 @@ def build_quantifier(gamefile, logfile, quantifier):
     univ_out.sort()
     exist_in.sort()
 
-    luniv = len(univ_out)
-    lexist = len(exist_in)
-    i = luniv - 1
-    j = lexist - 1
+    luniv, lexist = len(univ_out), len(exist_in)
+    i, j = luniv - 1, lexist - 1
     while i >= 0:
         while j >= 0 and exist_in[j][0] > univ_out[i][0]:
             edge.add((univ_out[i][1], exist_in[j][1]))
             j -= 1
         i -= 1
-
 
     graph = []
     visited = []
@@ -324,32 +301,26 @@ def gdl2qbf(current, other, gamefile, preprocess=True):
     encodefile = '2-player-turn-common-v8.lp'
 
     print_2_player_asp(current=curr_player, other=other_player, file=encodefile)
-
     logarithmic_encoding(gamefile, curr_player, other_player, 'game-log-domain-v5.lp')
-
-    build_quantifier(gamefile, 'game-log-domain-v5.lp', 'extra-quantifier.lp')
-
+    build_quantifier(curr_player, other_player, gamefile, 'game-log-domain-v5.lp', 'extra-quantifier.lp')
     cmd = f'clingo --output=smodels 2-player-turn-common-v8.lp  {gamefile} game-log-domain-v5.lp extra-quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > game.qdimacs'
-
     os.system(f"bash -c '{cmd}'")
 
     if preprocess == True:
-
         cmd = 'bloqqer --keep=0 game.qdimacs > game_bloqqer.qdimacs'
-
         print('Bloqqer preprocessing start')
-
         start = time.time()
-
         os.system(f"bash -c '{cmd}'")
-
         end = time.time()
-
         print(f'Bloqqer finishes in {round(end - start, 2)}s')
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python extg2qba.py [path to the Ext(G) gamefile] [current player] [other player]")
+    if len(sys.argv) != 5:
+        print("Usage: python extg2qba.py [path to the Ext(G) gamefile] [current player] [other player] [True|False]")
         exit(1)
 
-    gdl2qbf(sys.argv[2], sys.argv[3], sys.argv[1], True)
+
+    if sys.argv[4].lower() == 'true':
+        gdl2qbf(sys.argv[2], sys.argv[3], sys.argv[1], True)
+    else:
+        gdl2qbf(sys.argv[2], sys.argv[3], sys.argv[1], False)

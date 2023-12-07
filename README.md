@@ -54,15 +54,16 @@ Our contributions are:
 * Then just run the following command, out_plain.txt will store the unpreprocessed QBF instance translated from Ext(G)
 
 ```
-python extg2qbf.py [optional]  [name of the current player] [name of the other player]
+python extg2qbf.py [optional]  [name of the current player] [name of the other player] [True|False]
 
 ```
 
+The final argment indicates whether bloqqer preprocessing is activated or not.
 
 Example:
 
 ```
-python extg2qbf.py SinglePlayer/Translations/gttt-4x4-1-1-tippy.asp xplayer oplayer
+python extg2qbf.py SinglePlayer/Translations/gttt-4x4-1-1-tippy.asp xplayer oplayer True
 
 ```
 
