@@ -17,3 +17,5 @@ minimax_c.c
 minimax_solver
 2-player-turn-common-v8.lp
 game-log-domain-v5.lp
+game.qdimacs
+game_bloqqer.qdimacs
