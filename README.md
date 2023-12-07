@@ -46,12 +46,12 @@ Our contributions are:
 
 ## Usage
 
-* First create the answer set program Ext(G) according definition 2 in our paper or with EXTTranslator.ecl form a GDL in KIF
+* First create the answer set program Ext(G) with SinglePlayer/EXTTranslator.ecl from a GDL in KIF format
 
 * **Requirement: Ext(G) must be the temporal-extended ASP program of some two-player zero-sum turn-taking GDL game G, and the 2 players must be specified when you run the following python command**
 
 
-* Then just run the following command, out_plain.txt will store the unpreprocessed QBF instance translated from Ext(G)
+* Then just run the following command
 
 ```
 python extg2qbf.py [optional]  [name of the current player] [name of the other player] [True|False]
