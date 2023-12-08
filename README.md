@@ -35,13 +35,11 @@ Our contributions are:
 
 * Python 3+
 
-* ECLiPSe Prolog https://eclipseclp.org/
-
 * QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ 
 
 * qasp2qbf and its dependencies (i.e., lp2normal2, lp2acyc, lp2sat) https://github.com/potassco/qasp2qbf https://research.ics.aalto.fi/software/asp/download/
 
-* KIF to Ext(G) converter: the example usage of this tool can be found in SinglePlayer/.
+* KIF to Ext(G) converter: the example usage of this tool can be found in SinglePlayer/. You need to install ECLiPSe Prolog https://eclipseclp.org/ first.
 
 
 ## Usage
