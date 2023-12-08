@@ -303,7 +303,7 @@ def gdl2qbf(current, other, gamefile, preprocess=True):
     print_2_player_asp(current=curr_player, other=other_player, file=encodefile)
     logarithmic_encoding(gamefile, curr_player, other_player, 'game-log-domain-v5.lp')
     build_quantifier(curr_player, other_player, gamefile, 'game-log-domain-v5.lp', 'extra-quantifier.lp')
-    cmd = f'clingo --output=smodels 2-player-turn-common-v8.lp  {gamefile} game-log-domain-v5.lp extra-quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > game.qdimacs'
+    cmd = f'clingo --output=smodels 2-player-turn-common-v8.lp  {gamefile} game-log-domain-v5.lp extra-quantifier.lp | python qasp2qbf.py --no-warnings | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > game.qdimacs'
     os.system(f"bash -c '{cmd}'")
 
     if preprocess == True:
