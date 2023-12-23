@@ -1,5 +1,5 @@
 # gdl2qbf
-A converter from two-player zero-sum turn-taking GDL to QBF
+A converter from two-player zero-sum turn-taking GDL to QBF, the paper [a relative link](aamas-final-version.pdf) is attached.
 
 ## Description
 
