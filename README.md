@@ -1,5 +1,5 @@
 # gdl2qbf
-A converter from two-player zero-sum turn-taking GDL to QBF, [the paper](aamas-final-version.pdf) is attached.
+A converter from two-player zero-sum turn-taking GDL to QBF, [the paper](aamas-final-version.pdf) is attached. Only the dependency-based quantification method is supported.
 
 ## Description
 
@@ -26,6 +26,8 @@ Our contributions are:
 
 * We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
 
+
+**The experients in the paper can be found in archive/, note that in the paper, we did G -> Ext(G) by hand using definition 2 in the paper, not by the automated converter! Hence, if you rerun our tool-chain, some minor differences in the statistics can be expected, but the trend won't change.**
 
 ## Dependencies
 
