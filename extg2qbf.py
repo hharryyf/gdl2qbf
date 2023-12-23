@@ -1,3 +1,8 @@
+'''
+    Temporal extended ASP to QBF converter
+    Contributors: Yifan He, Abdallah Saffidine, Michael Thielscher
+'''
+
 import os
 import sys
 import time

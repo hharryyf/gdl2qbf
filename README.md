@@ -74,3 +74,7 @@ python extg2qbf.py SinglePlayer/Translations/gttt-4x4-1-1-tippy.asp xplayer opla
 [caqe|depqbf] game_bloqqer.qdimacs
 
 ```
+
+## Contributors
+
+* Yifan He, Abdallah Saffidine, Michael Thielscher

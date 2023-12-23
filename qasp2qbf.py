@@ -1,4 +1,4 @@
-# This piece of code is copied from https://github.com/potassco/qasp2qbf
+# This piece of code the qasp2qbf software, copied from https://github.com/potassco/qasp2qbf
 
 #!/usr/bin/python
 
