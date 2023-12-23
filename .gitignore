@@ -19,3 +19,8 @@ minimax_solver
 game-log-domain-v5.lp
 game.qdimacs
 game_bloqqer.qdimacs
+game_turn.qdimacs
+game_turn_bloqqer.qdimacs
+game-log-domain-v4.lp
+2-player-turn-common-v7.lp
+count_var.py

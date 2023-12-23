@@ -1,5 +1,9 @@
 '''
-    Temporal extended ASP to QBF converter
+    Temporal extended ASP to QBF converter when the game is assumed to be strictly turn-taking
+    Since strictly turn-taking is not really helpful, we make the following assumptions:
+    1) the player taking turn at timestamp 1 is xplayer
+    2) the 2 players are xplayer and oplayer
+
     Contributors: Yifan He, Abdallah Saffidine, Michael Thielscher
 '''
 
@@ -11,19 +15,22 @@ import queue
 
 def print_2_player_asp(current, other, file):
     '''
-        current is the current player
-        other is the other player
-        if empty, current = 'xplayer', other = 'oplayer'
-
+        current is the xplayer
+        other is the oplayer
+        
         Output the (unquantified) answer set program that models the 2 player game, excluding the logrithmic encoding
         of the universal player to "file"
     '''
+    current = 'xplayer'
+    other = 'oplayer'
     f = open(file=file, mode='w')
+    print(f"_other_player({current},{other}). _other_player({other},{current}).",file=f)
+    print("does(P, M, T) :- _player_turn(O,T), _other_player(O,P), not terminated(T), movetimedomain(T), legal(P, M, T).", file=f)
     print("timedomain(1).",file=f)
     print("timedomain(T+1) :- movetimedomain(T).",file=f)
     print(file=f)
     print("% logarithmic encoding",file=f)
-    print(f"{{moveL({other}, M, T) : log_domain(M)}} :- movetimedomain(T).",file=f)
+    print(f"{{moveL({other}, M, T) : log_domain(M)}} :- _player_turn({other},T).",file=f)
     print(file=f)
     print("% additional constraints for the GDL encoding.",file=f)
     print("terminated(T) :- terminal(T).",file=f)
@@ -32,7 +39,7 @@ def print_2_player_asp(current, other, file):
     print(":- does(P,M,T), not legal(P,M,T).",file=f)
     print(file=f)
     print("% existential player must take a move at its turn",file=f)
-    print("1 {does(P,M,T) : move_domain(P, M)} 1 :- not terminated(T), movetimedomain(T), role(P).",file=f)
+    print("1 {does(P,M,T) : move_domain(P, M)} 1 :- not terminated(T), _player_turn(P, T).",file=f)
     print(":- terminated(T), does(P,M,T).",file=f)
     print("% game must terminate",file=f)
     print(":- 0 {terminated(T) : timedomain(T)} 0.",file=f)
@@ -43,7 +50,7 @@ def print_2_player_asp(current, other, file):
     f.close()
 
 
-def logarithmic_encoding(gamefile, current, other, logfile):
+def logarithmic_encoding(gamefile, turnfile, current, other, logfile):
     '''
         The logarithmic encoding function
         Read a game description gamefile in ASP
@@ -54,12 +61,12 @@ def logarithmic_encoding(gamefile, current, other, logfile):
     state = 0
     moves, moveL, moveO, moveX  = set(), set(), set(), set()
     
-    cmd1 = f'clingo --output=smodels {gamefile} move-domain.lp > move_smodels.txt'
+    cmd1 = f'clingo --output=smodels {gamefile} {turnfile} move-domain.lp > move_smodels.txt'
     os.system(f"bash -c '{cmd1}'")
 
     xturn, oturn = set(), set()
     logfile = open(file=logfile,mode='w')
-    print(f'% logarithmic encoding of the game {gamefile}', file=logfile)
+    print(f'% logarithmic encoding of the game {gamefile} with strictly turn-taking assumption', file=logfile)
     with open('move_smodels.txt', 'r') as f:
         for line in f:
             line = line.strip()
@@ -67,9 +74,10 @@ def logarithmic_encoding(gamefile, current, other, logfile):
                 state += 1
             elif state == 1:
                 atom = line.split()[-1]
-                if atom[:15] == 'movetimedomain(':
-                    xturn.add(int(atom[15:-1]))
-                    oturn.add(int(atom[15:-1]))
+                if atom[:21] == f'_player_turn({curr_player},':
+                    xturn.add(int(atom[21:-1]))
+                elif atom[:21] == f'_player_turn({other_player},':
+                    oturn.add(int(atom[21:-1]))
 
     state = 0
 
@@ -146,13 +154,13 @@ def logarithmic_encoding(gamefile, current, other, logfile):
     print(file=logfile)
     logfile.close()
 
-def build_quantifier(current, other, gamefile, logfile, quantifier):
+def build_quantifier(current, other, gamefile, turnfile, logfile, quantifier):
     '''
         Construct the quantifier prefix of the QASP based on the encoding method GD
         specify the gamefile, the logarithmic encoding file, output to the quantifier file
     '''
 
-    cmd = f'clingo --output=smodels 2-player-turn-common-v8.lp  {gamefile} {logfile}  > smodels.txt'
+    cmd = f'clingo --output=smodels 2-player-turn-common-v7.lp  {gamefile} {turnfile} {logfile}  > smodels.txt'
     os.system(f"bash -c '{cmd}'")
 
     outputfile = open(file=quantifier, mode='w')
@@ -300,19 +308,19 @@ def build_quantifier(current, other, gamefile, logfile, quantifier):
     outputfile.close()
 
 
-def gdl2qbf(current, other, gamefile, preprocess=True):
+def gdl2qbf(current, other, turnfile, gamefile, preprocess=True):
     curr_player = current
     other_player = other
-    encodefile = '2-player-turn-common-v8.lp'
+    encodefile = '2-player-turn-common-v7.lp'
 
     print_2_player_asp(current=curr_player, other=other_player, file=encodefile)
-    logarithmic_encoding(gamefile, curr_player, other_player, 'game-log-domain-v5.lp')
-    build_quantifier(curr_player, other_player, gamefile, 'game-log-domain-v5.lp', 'extra-quantifier.lp')
-    cmd = f'clingo --output=smodels 2-player-turn-common-v8.lp  {gamefile} game-log-domain-v5.lp extra-quantifier.lp | python qasp2qbf.py --no-warnings | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > game.qdimacs'
+    logarithmic_encoding(gamefile, turnfile, curr_player, other_player, 'game-log-domain-v4.lp')
+    build_quantifier(curr_player, other_player, gamefile, turnfile, 'game-log-domain-v4.lp', 'extra-quantifier.lp')
+    cmd = f'clingo --output=smodels 2-player-turn-common-v7.lp  {gamefile} {turnfile} game-log-domain-v4.lp extra-quantifier.lp | python qasp2qbf.py --no-warnings | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > game_turn.qdimacs'
     os.system(f"bash -c '{cmd}'")
 
     if preprocess == True:
-        cmd = 'bloqqer --keep=0 game.qdimacs > game_bloqqer.qdimacs'
+        cmd = 'bloqqer --keep=0 game_turn.qdimacs > game_turn_bloqqer.qdimacs'
         print('Bloqqer preprocessing start')
         start = time.time()
         os.system(f"bash -c '{cmd}'")
@@ -320,12 +328,12 @@ def gdl2qbf(current, other, gamefile, preprocess=True):
         print(f'Bloqqer finishes in {round(end - start, 2)}s')
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: python extg2qbf.py [path to the Ext(G) gamefile] [current player] [other player] [True|False]")
+    if len(sys.argv) != 4:
+        print("Usage: python extg2qbf-turn.py [path to the Ext(G) gamefile] [path to the turn file] [True|False]")
         exit(1)
 
 
-    if sys.argv[4].lower() == 'true':
-        gdl2qbf(sys.argv[2], sys.argv[3], sys.argv[1], True)
+    if sys.argv[3].lower() == 'true':
+        gdl2qbf('xplayer', 'oplayer', sys.argv[2], sys.argv[1], True)
     else:
-        gdl2qbf(sys.argv[2], sys.argv[3], sys.argv[1], False)
+        gdl2qbf('xplayer', 'oplayer', sys.argv[2], sys.argv[1], False)
