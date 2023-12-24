@@ -31,14 +31,13 @@ def print_2_player_asp(current, other, file):
     print(file=f)
     print(":- does(P,M,T), not legal(P,M,T).",file=f)
     print(file=f)
-    print("% existential player must take a move at its turn",file=f)
+    print("% existential and universal players must take a move at its turn",file=f)
     print("1 {does(P,M,T) : move_domain(P, M)} 1 :- not terminated(T), movetimedomain(T), role(P).",file=f)
     print(":- terminated(T), does(P,M,T).",file=f)
     print("% game must terminate",file=f)
     print(":- 0 {terminated(T) : timedomain(T)} 0.",file=f)
     print("% current player player must reach goal 100",file=f)
     print(f":- terminated(T), not terminated(T-1), not goal({current}, 100 ,T).",file=f)
-    print("% existential player is not going to cheat",file=f)
     print(f":- terminated(1), not goal({current}, 100 ,1).",file=f)
     f.close()
 
@@ -157,7 +156,7 @@ def build_quantifier(current, other, gamefile, logfile, quantifier):
 
     outputfile = open(file=quantifier, mode='w')
 
-    bad = ['log_domain(', 'timedomain(', 'movetimedomain(', 'move_domain(', '_']
+    bad = ['log_domain(', 'timedomain(', 'movetimedomain(', 'move_domain(']
     state, mxv = 0, 0
     edge = set()
     vertex, universal, exist = {}, {}, {}
