@@ -1,7 +1,7 @@
 # gdl2qbf
 A converter from two-player zero-sum turn-taking GDL to QBF, [the paper](submission-final.pdf) is attached. Only the best-performed dependency-based quantification method is supported.
 
-The experiments in the paper can be found in archive/. Note that the code in archive/ was rewritten for readibility purposes.
+The experiments in the paper can be found in archive/. The code in this directory is basically a cleaner version of the code in archive/.
 
 ## Description
 
