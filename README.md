@@ -1,6 +1,8 @@
 # gdl2qbf
 A converter from two-player zero-sum turn-taking GDL to QBF, [the paper](submission-final.pdf) is attached. Only the best-performed dependency-based quantification method is supported.
 
+The experiments in the paper can be found in archive/. Note that the code in archive/ was rewritten for readibility purposes.
+
 ## Description
 
 The converter will translate a two-player zero-sum turn-taking GDL to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points in the GDL game no matter what the other player performs.
