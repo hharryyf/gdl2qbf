@@ -27,7 +27,7 @@ Our contributions are:
 * We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
 
 
-**The experients in the paper can be found in archive/, note that in the paper, we did G -> Ext(G) by hand using definition 2 in the paper, not by the automated converter! Hence, if you rerun our tool-chain, some minor differences in the statistics can be expected, but the trend won't change.**
+**The experients in the paper can be found in archive/. Note that by the time the paper was submitted, we did G -> Ext(G) by hand using definition 2 in the paper, not by the automated converter! Hence, if you rerun our tool-chain, some minor differences in the statistics can be expected, but the trend won't change.**
 
 ## Dependencies
 
@@ -37,12 +37,11 @@ Our contributions are:
 
 * Python 3+
 
-* QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ 
+* QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ (bloqqer must be put into PATH)
 
-* qasp2qbf and its dependencies (i.e., lp2normal2, lp2acyc, lp2sat) https://github.com/potassco/qasp2qbf https://research.ics.aalto.fi/software/asp/download/
+* qasp2qbf and its dependencies (i.e., lp2normal2, lp2acyc, lp2sat) https://github.com/potassco/qasp2qbf https://research.ics.aalto.fi/software/asp/download/ (lp2normal2, lp2acyc, lp2sat must be put into PATH)
 
 * KIF to Ext(G) converter: the example usage of this tool can be found in SinglePlayer/. You need to install ECLiPSe Prolog https://eclipseclp.org/ first.
-
 
 ## Usage
 
