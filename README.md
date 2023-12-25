@@ -55,7 +55,7 @@ Our contributions are:
 * Then just run the following command
 
 ```
-python extg2qbf.py [optional]  [name of the current player] [name of the other player] [True|False]
+python extg2qbf.py [path to the temporal-extended ASP program]  [name of the current player] [name of the other player] [True|False]
 
 ```
 
