@@ -33,7 +33,7 @@ Our contributions are:
 
 ## Dependencies
 
-* Clingo https://github.com/potassco/guide/releases
+* Clingo https://github.com/potassco/guide/releases (clingo must be put into PATH)
 
 * QBF solver Caqe https://github.com/ltentrup/caqe and DepQBF  https://github.com/lonsing/depqbf 
 
