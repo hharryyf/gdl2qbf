@@ -29,7 +29,7 @@ Our contributions are:
 * We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
 
 
-**The experients in the paper can be found in archive/. Note that by the time the paper was submitted, we did G -> Ext(G) by hand using definition 2 in the paper, not by the automated converter! Hence, if you rerun our tool-chain, some minor differences in the statistics can be expected, but the trend won't change.**
+**The experients in the paper can be found in archive/.**
 
 ## Dependencies
 
