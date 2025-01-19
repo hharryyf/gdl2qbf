@@ -1,5 +1,5 @@
 # gdl2qbf
-A converter from two-player zero-sum turn-taking GDL to QBF, [the paper](aamas-2024-final-version.pdf) is attached. Only the best-performed dependency-based quantification method is supported.
+A converter from two-player zero-sum turn-taking GDL to QBF, [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf) is attached. Only the best-performed dependency-based quantification method is supported.
 
 The experiments in the paper can be found in archive/. The code in this directory is basically a cleaner version of the code in archive/.
 
