@@ -3,6 +3,9 @@ A converter from two-player zero-sum turn-taking GDL to QBF, [the paper](https:/
 
 The experiments in the paper can be found in archive/. The code in this directory is basically a cleaner version of the code in archive/.
 
+WARNING!! This repository is no longer maintained, please refer to [gtl2qbf-general](https://github.com/hharryyf/gdl2qbf-general) for the latest updates.
+
+
 ## Description
 
 The converter will translate a two-player zero-sum turn-taking GDL to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points in the GDL game no matter what the other player performs.
